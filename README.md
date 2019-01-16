@@ -1,2 +1,2 @@
-# sister
-Multi-view robotic stereo
+# SiSter: Single camera Stereo Vision
+Multi-view robotic stereo...
