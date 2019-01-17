@@ -63,7 +63,7 @@ body {
 
 .container .title:hover b{
     cursor: pointer;
-    color: #00BCD4;
+    color: #2196F3;
 }
 
 @keyframes heartbeat2 {
