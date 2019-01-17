@@ -54,7 +54,7 @@ body {
 }
 .container .title b{
     color:#E71F63;
-    transition: 1000ms all;
+    transition: 400ms all;
 }
 
 .beat {
@@ -63,7 +63,7 @@ body {
 
 .container .title:hover b{
     cursor: pointer;
-    font-size:60px;
+    color: #00BCD4;
 }
 
 @keyframes heartbeat2 {
