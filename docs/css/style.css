@@ -60,10 +60,9 @@ body {
     /*animation: stereo 2.5s infinite;*/
 }
 
-.container .title:hover {
+.container .title:hover b{
     cursor: pointer;
-    color: #000;
-    transform: scale(1.02);
+    transform: scale(1.1);
 }
 
 @keyframes heartbeat2 {
