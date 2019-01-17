@@ -52,6 +52,9 @@ body {
     color: #3E3E3E;
     transition: 1000ms all;
 }
+.container .title b{
+    color:#E71F63;
+}
 
 .beat {
     animation: heartbeat2 2.5s infinite;
