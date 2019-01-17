@@ -19,6 +19,15 @@ body {
     margin: auto;
 }
 
+.container img.robot.light {
+    position: absolute;
+    height: 90%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: fading 2.5s infinite;
+}
+
 .container img.hearth {
     position: absolute;
     height: 90%;
@@ -52,8 +61,9 @@ body {
     color: #3E3E3E;
     transition: 1000ms all;
 }
-.container .title b{
-    color:#E71F63;
+
+.container .title b {
+    color: #E71F63;
     transition: 400ms all;
 }
 
@@ -61,53 +71,80 @@ body {
     /*animation: stereo 2.5s infinite;*/
 }
 
-.container .title:hover b{
+.container .title:hover b {
     cursor: pointer;
     color: #2196F3;
 }
 
+@keyframes fading {
+    0% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0.9;
+        filter: sepia(20%);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 @keyframes heartbeat2 {
     0% {
-        transform: scale( 1.0);
+        transform: scale(1.0);
         color: #3E3E3E;
     }
+
+    70% {
+        transform: scale(1.0);
+        color: #3E3E3E;
+    }
+
     90% {
-        transform: scale( 1.0);
-        color: #3E3E3E;
-    }
-    95% {
-        transform: scale( 1.1);
+        transform: scale(1.1);
         color: #420E04;
     }
+
     100% {
-        transform: scale( 1.0);
+        transform: scale(1.0);
         color: #3E3E3E;
     }
 }
 
 @keyframes heartbeat {
     0% {
-        transform: scale( .98);
+        transform: scale(.98);
         color: #3E3E3E;
     }
+
     20% {
-        transform: scale( 1);
+        transform: scale(1);
         color: #420E04;
     }
+
     40% {
-        transform: scale( .98);
+        transform: scale(.98);
         color: #3E3E3E;
     }
+
     60% {
-        transform: scale( 1);
+        transform: scale(1);
         color: #420E04;
     }
+
     80% {
-        transform: scale( .98);
+        transform: scale(.98);
         color: #3E3E3E;
     }
+
     100% {
-        transform: scale( .98);
+        transform: scale(.98);
         color: #3E3E3E;
     }
 }
@@ -116,15 +153,19 @@ body {
     0% {
         text-shadow: -0.0em 0 red, 0.0em 0 cyan;
     }
+
     15% {
         text-shadow: -0.2em 0 #ff000055, 0.2em 0 #00ffff55;
     }
+
     30% {
         text-shadow: -0.4em 0 #ff000022, 0.4em 0 #00ffff22;
     }
+
     45% {
         text-shadow: -0.6em 0 #ff000011, 0.6em 0 #00ffff11;
     }
+
     60% {
         text-shadow: -0.8em 0 #ff000000, 0.8em 0 #00ffff00;
     }
@@ -133,5 +174,3 @@ body {
         text-shadow: -0.8em 0 #ff000000, 0.8em 0 #00ffff00;
     }
 }
-
-
