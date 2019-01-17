@@ -117,14 +117,20 @@ body {
         text-shadow: -0.0em 0 red, 0.0em 0 cyan;
     }
     15% {
-        text-shadow: -0.1em 0 red, 0.1em 0 cyan;
+        text-shadow: -0.2em 0 #ff000055, 0.2em 0 #00ffff55;
     }
     30% {
-        text-shadow: -0.0em 0 red, 0.0em 0 cyan;
+        text-shadow: -0.4em 0 #ff000022, 0.4em 0 #00ffff22;
+    }
+    45% {
+        text-shadow: -0.6em 0 #ff000011, 0.6em 0 #00ffff11;
+    }
+    60% {
+        text-shadow: -0.8em 0 #ff000000, 0.8em 0 #00ffff00;
     }
 
     100% {
-        text-shadow: -0.0em 0 red, 0.0em 0 cyan;
+        text-shadow: -0.8em 0 #ff000000, 0.8em 0 #00ffff00;
     }
 }
 
