@@ -57,13 +57,13 @@ body {
 }
 
 .beat {
-    animation: stereo 2.5s infinite;
+    /*animation: stereo 2.5s infinite;*/
 }
 
 .container .title:hover {
     cursor: pointer;
     color: #000;
-    transform: scale(1.2);
+    transform: scale(1.02);
 }
 
 @keyframes heartbeat2 {
