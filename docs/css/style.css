@@ -57,7 +57,7 @@ body {
 }
 
 .beat {
-    animation: stereo 1.5s infinite;
+    animation: stereo 2.5s infinite;
 }
 
 .container .title:hover {
