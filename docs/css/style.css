@@ -116,9 +116,13 @@ body {
     0% {
         text-shadow: -0.0em 0 red, 0.0em 0 cyan;
     }
-    50% {
+    15% {
         text-shadow: -0.1em 0 red, 0.1em 0 cyan;
     }
+    30% {
+        text-shadow: -0.0em 0 red, 0.0em 0 cyan;
+    }
+
     100% {
         text-shadow: -0.0em 0 red, 0.0em 0 cyan;
     }
