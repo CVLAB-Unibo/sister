@@ -51,7 +51,11 @@ if len(rgb_file) > 0:
 
 # Filtering
 for i in range(0):
-    depth = cv2.bilateralFilter(depth.astype(np.float32), 0, 0.5, 1)
+    depth = cv2.bilateralFilter(depth.astype(np.float32), 3, 0.5, 0)
+
+kernel = np.ones((5, 5), np.float32)/1
+depth = cv2.filter2D(depth.astype(np.float32), -1, kernel)
+
 
 # Cloud generation
 cloud = camera.depthMapToPointCloud(depth)
