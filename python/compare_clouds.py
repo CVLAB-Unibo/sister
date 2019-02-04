@@ -7,7 +7,7 @@ import os
 import glob
 import cv2
 import time
-from sister import Utilities, Camera, SisterCamera, Reconstruction
+from sister.sister import Utilities, Camera, SisterCamera, Reconstruction
 from open3d import *
 import argparse
 import xmltodict

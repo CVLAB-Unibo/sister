@@ -22,7 +22,7 @@ def createPcd(cloud, color_image=None):
     return pcd
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser("Test RF")
 parser.add_argument("--camera_file", help="Camera parameters filename", type=str, required=True)
 parser.add_argument("--depth_file", help="Depth filename", type=str, required=True)
 parser.add_argument("--rgb_file", help="Rgb filename", type=str, default='')
@@ -50,9 +50,12 @@ if len(rgb_file) > 0:
     rgb = cv2.cvtColor(cv2.imread(rgb_file), cv2.COLOR_BGR2RGB)
 
 # Filtering
-for i in range(10):
+for i in range(1):
     depth = cv2.bilateralFilter(depth.astype(np.float32), 3, 0.5, 0)
 
+# kernel = np.ones((5, 5), np.float32)/1
+# depth = cv2.filter2D(depth.astype(np.float32), -1, kernel)
+print(depth)
 
 # Cloud generation
 cloud = camera.depthMapToPointCloud(depth)
@@ -62,4 +65,4 @@ pcd = createPcd(cloud, color_image=rgb)
 draw_geometries([pcd])
 
 # Output file
-write_point_cloud('/tmp/cloud.ply', pcd)
+write_point_cloud('/tmp/cloud.pcd', pcd)

@@ -1,0 +1,8 @@
+<sister_camera>
+  <camera>
+    <camera_matrix>528.580921 0. 334.548055 0. 528.000913 237.481637 0. 0. 1. </camera_matrix>
+  </camera>
+  <baseline>0.01</baseline>
+  <min_distance>0.01</min_distance>
+  <max_distance>0.01</max_distance>
+</sister_camera>
