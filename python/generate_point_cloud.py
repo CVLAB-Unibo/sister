@@ -9,6 +9,7 @@ import cv2
 import time
 from sister.sister import Utilities, Camera
 from open3d import *
+import open3d
 import argparse
 
 
@@ -29,6 +30,7 @@ parser.add_argument("--rgb_file", help="Rgb filename", type=str, default='')
 parser.add_argument("--baseline", help="Stereo baseline", type=float, default=0.1)
 parser.add_argument("--min_distance", help="Min clip distance", type=float, default=0.0)
 parser.add_argument("--max_distance", help="Max clip distance", type=float, default=0.8)
+parser.add_argument("--scaling_factor", help="Scaling factor s  -> will be applied (1/s)", type=float, default=256.)
 args = parser.parse_args()
 
 
@@ -40,7 +42,14 @@ depth_file = args.depth_file
 rgb_file = args.rgb_file
 
 # Disparity&Depth
-disparity = Utilities.loadRangeImage(depth_file)
+disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_factor)
+
+# DISPARITY SMOOTH
+for i in range(0):
+    disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 0.5, 0)
+
+
+print("MINMAX", np.min(disparity), np.max(disparity))
 depth = camera.getFx() * args.baseline / (disparity)
 depth = np.clip(depth, args.min_distance, args.max_distance)
 
@@ -49,16 +58,24 @@ rgb = None
 if len(rgb_file) > 0:
     rgb = cv2.cvtColor(cv2.imread(rgb_file), cv2.COLOR_BGR2RGB)
 
-# Filtering
-for i in range(10):
-    depth = cv2.bilateralFilter(depth.astype(np.float32), 3, 0.5, 0)
+# DEPTH SMOOTH
+for i in range(0):
+    depth = cv2.bilateralFilter(depth.astype(np.float32), 5, 0.5, 0)
 
 
 # Cloud generation
 cloud = camera.depthMapToPointCloud(depth)
 
+
 # Open3D Visualizatoin
 pcd = createPcd(cloud, color_image=rgb)
+
+# mesh = open3d.TriangleMesh()
+# mesh.vertices = open3d.Verte np.array([0, 1, 0])
+# print(mesh.vertices)
+# print(mesh.triangles)
+
+
 draw_geometries([pcd])
 
 # Output file

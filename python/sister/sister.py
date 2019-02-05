@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import xmltodict
 from open3d import *
+import open3d
 
 
 class Utilities(object):
@@ -51,6 +52,68 @@ class Utilities(object):
         cloud = np.swapaxes(cloud, 0, 1)
         cloud = np.swapaxes(cloud, 1, 2)
         return cloud
+
+    @staticmethod
+    def meshFromPointCloud(cloud, color_image=None):
+        pcd = Utilities.createPcd(cloud)
+        mesh = TriangleMesh()
+
+        mesh.vertices = pcd.points
+        print(mesh.vertices)
+        print(mesh.triangles)
+
+        w = cloud.shape[1]
+        h = cloud.shape[0]
+        size = w*h
+        size_faces = (w-1)*(h-1)*2
+        points = np.zeros((size, 3), float)
+        colors = np.zeros((size, 3), float)
+        triangles = np.zeros((size_faces, 3), np.int32)
+        color_map = np.ones((h, w, 3))*100 if color_image is None else color_image
+
+        color_map = color_map / 255.
+
+        points_index = 0
+        triangle_index = 0
+        for r in range(0, cloud.shape[0], 1):
+            for c in range(0, cloud.shape[1], 1):
+                p0 = cloud[r, c, :]
+
+                if r < cloud.shape[0]-1 and c < cloud.shape[1]-1:
+                    p1 = cloud[r, c+1, :]
+                    p2 = cloud[r+1, c, :]
+                    p3 = cloud[r+1, c+1, :]
+
+                    # n1 = np.cross(p2-p0, p1-p0)
+                    # n1 = n1 / np.linalg.norm(n1)
+                    # normals[triangle_index, :] = n1
+
+                    # n2 = np.cross(p2-p1, p3-p1)
+                    # n2 = n2 / np.linalg.norm(n2)
+                    # normals[triangle_index+1, :] = n2
+
+                    i0 = r * w + c
+                    i1 = r * w + c + 1
+                    i2 = (r+1)*w + c
+                    i3 = (r+1)*w + c + 1
+
+                    triangles[triangle_index, :] = np.array([i0, i2, i1])
+                    triangles[triangle_index+1, :] = np.array([i1, i2, i3])
+                    # triangles.append([i0, i1, i2])
+                    triangle_index += 2
+
+                    # triangles.append([i1, i3, i2])
+                points[points_index, :] = p0
+                colors[points_index, :] = color_map[r, c, :]
+                points_index += 1
+
+        mesh.triangles = open3d.Vector3iVector(np.array(triangles))
+        mesh.vertices = open3d.Vector3dVector(np.array(points))
+        mesh.vertex_colors = open3d.Vector3dVector(np.array(colors))
+        # mesh.triangle_normals = open3d.Vector3dVector(np.array(normals))
+        mesh.compute_vertex_normals()
+
+        return mesh
 
     @staticmethod
     def createPcd(cloud, color_image=None):

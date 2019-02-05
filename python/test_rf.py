@@ -9,26 +9,18 @@ import cv2
 import time
 from sister.sister import Utilities, Camera
 from open3d import *
+import open3d
 import argparse
 
 
-def createPcd(cloud, color_image=None):
-    pcd = PointCloud()
-    pcd.points = Vector3dVector(cloud.reshape((-1, 3)))
-    if color_image is not None:
-        colors = color_image.astype(float).reshape((-1, 3)) / 255.
-        pcd.colors = Vector3dVector(colors)
-
-    return pcd
-
-
-parser = argparse.ArgumentParser("Test RF")
+parser = argparse.ArgumentParser()
 parser.add_argument("--camera_file", help="Camera parameters filename", type=str, required=True)
 parser.add_argument("--depth_file", help="Depth filename", type=str, required=True)
 parser.add_argument("--rgb_file", help="Rgb filename", type=str, default='')
 parser.add_argument("--baseline", help="Stereo baseline", type=float, default=0.1)
 parser.add_argument("--min_distance", help="Min clip distance", type=float, default=0.0)
 parser.add_argument("--max_distance", help="Max clip distance", type=float, default=0.8)
+parser.add_argument("--scaling_factor", help="Scaling factor s  -> will be applied (1/s)", type=float, default=256.)
 args = parser.parse_args()
 
 
@@ -40,7 +32,14 @@ depth_file = args.depth_file
 rgb_file = args.rgb_file
 
 # Disparity&Depth
-disparity = Utilities.loadRangeImage(depth_file)
+disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_factor)
+
+# DISPARITY SMOOTH
+for i in range(10):
+    disparity = cv2.bilateralFilter(disparity.astype(np.float32), 15, 10.5, 0)
+
+
+print("MINMAX", np.min(disparity), np.max(disparity))
 depth = camera.getFx() * args.baseline / (disparity)
 depth = np.clip(depth, args.min_distance, args.max_distance)
 
@@ -49,20 +48,22 @@ rgb = None
 if len(rgb_file) > 0:
     rgb = cv2.cvtColor(cv2.imread(rgb_file), cv2.COLOR_BGR2RGB)
 
-# Filtering
-for i in range(1):
-    depth = cv2.bilateralFilter(depth.astype(np.float32), 3, 0.5, 0)
+# DEPTH SMOOTH
+for i in range(0):
+    depth = cv2.bilateralFilter(depth.astype(np.float32), 15, 0.5, 0)
 
-# kernel = np.ones((5, 5), np.float32)/1
-# depth = cv2.filter2D(depth.astype(np.float32), -1, kernel)
-print(depth)
 
 # Cloud generation
 cloud = camera.depthMapToPointCloud(depth)
 
+
 # Open3D Visualizatoin
-pcd = createPcd(cloud, color_image=rgb)
-draw_geometries([pcd])
+pcd = Utilities.createPcd(cloud, color_image=rgb)
+mesh = Utilities.meshFromPointCloud(cloud, color_image=rgb)
+
+draw_geometries([mesh])
+
 
 # Output file
-write_point_cloud('/tmp/cloud.pcd', pcd)
+write_point_cloud('/tmp/cloud.ply', pcd)
+write_triangle_mesh("/tmp/mesh.ply", mesh)
