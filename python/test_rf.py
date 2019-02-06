@@ -21,6 +21,8 @@ parser.add_argument("--baseline", help="Stereo baseline", type=float, default=0.
 parser.add_argument("--min_distance", help="Min clip distance", type=float, default=0.0)
 parser.add_argument("--max_distance", help="Max clip distance", type=float, default=0.8)
 parser.add_argument("--scaling_factor", help="Scaling factor s  -> will be applied (1/s)", type=float, default=256.)
+parser.add_argument("--is_depth", help="Is input a depth?", type=bool, default=False)
+parser.add_argument("--visualization_type", help="Visualziation Type", type=str, default="pcd")
 args = parser.parse_args()
 
 
@@ -35,12 +37,17 @@ rgb_file = args.rgb_file
 disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_factor)
 
 # DISPARITY SMOOTH
-for i in range(10):
-    disparity = cv2.bilateralFilter(disparity.astype(np.float32), 15, 10.5, 0)
+for i in range(0):
+    disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 1110.5, 0)
 
 
-print("MINMAX", np.min(disparity), np.max(disparity))
-depth = camera.getFx() * args.baseline / (disparity)
+if args.is_depth:
+    print("IT IS A DEPTH IMAGE!")
+    depth = disparity
+else:
+    depth = camera.getFx() * args.baseline / (disparity)
+
+print("MAX MIN", np.max(depth), np.min(depth))
 depth = np.clip(depth, args.min_distance, args.max_distance)
 
 # RGB Image
@@ -50,7 +57,7 @@ if len(rgb_file) > 0:
 
 # DEPTH SMOOTH
 for i in range(0):
-    depth = cv2.bilateralFilter(depth.astype(np.float32), 15, 0.5, 0)
+    depth = cv2.bilateralFilter(depth.astype(np.float32), 5, 0.5, 0)
 
 
 # Cloud generation
@@ -58,12 +65,13 @@ cloud = camera.depthMapToPointCloud(depth)
 
 
 # Open3D Visualizatoin
-pcd = Utilities.createPcd(cloud, color_image=rgb)
-mesh = Utilities.meshFromPointCloud(cloud, color_image=rgb)
-
-draw_geometries([mesh])
 
 
-# Output file
-write_point_cloud('/tmp/cloud.ply', pcd)
-write_triangle_mesh("/tmp/mesh.ply", mesh)
+if args.visualization_type == 'pcd':
+    pcd = Utilities.createPcd(cloud, color_image=rgb)
+    draw_geometries([pcd])
+    write_point_cloud('/tmp/cloud.ply', pcd)
+elif args.visualization_type == 'mesh':
+    mesh = Utilities.meshFromPointCloud(cloud, color_image=rgb)
+    draw_geometries([mesh])
+    write_triangle_mesh("/tmp/mesh.ply", mesh)

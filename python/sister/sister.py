@@ -97,8 +97,12 @@ class Utilities(object):
                     i2 = (r+1)*w + c
                     i3 = (r+1)*w + c + 1
 
-                    triangles[triangle_index, :] = np.array([i0, i2, i1])
-                    triangles[triangle_index+1, :] = np.array([i1, i2, i3])
+                    if p1[2] < 0.01 or p2[2] < 0.01 or p3[2] < 0.01:
+                        triangles[triangle_index, :] = np.array([0, 0, 0])
+                        triangles[triangle_index+1, :] = np.array([0, 0, 0])
+                    else:
+                        triangles[triangle_index, :] = np.array([i0, i2, i1])
+                        triangles[triangle_index+1, :] = np.array([i1, i2, i3])
                     # triangles.append([i0, i1, i2])
                     triangle_index += 2
 
@@ -131,10 +135,12 @@ class Camera(object):
         if filename is not None:
             if '.txt' in filename:
                 self.camera_matrix = np.loadtxt(filename)
+                self.distortions = np.array([0, 0, 0, 0, 0])
             elif '.xml' in filename:
                 doc = Utilities.loadXMLFile(filename)
                 print("D"*20, doc['sister_camera']['camera']['camera_matrix'])
                 self.camera_matrix = np.fromstring(doc['sister_camera']['camera']['camera_matrix'], sep=' ').reshape((3, 3))
+                self.distortions = np.fromstring(doc['sister_camera']['camera']['distortions'], sep=' ').reshape((1, -1))
 
     def getCameraMatrix(self):
         return self.camera_matrix

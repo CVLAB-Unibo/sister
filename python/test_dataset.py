@@ -11,6 +11,7 @@ from open3d import *
 import argparse
 import xmltodict
 from sister.datasets import CircularDataset
+from sister.sister import SisterCamera
 
 parser = argparse.ArgumentParser("Test Dataset")
 parser.add_argument("--path", help="Dataset Path", type=str, required=True)
@@ -19,7 +20,9 @@ parser.add_argument("--baseline_index", help="Baseline index [0,1,2,3,4]", type=
 args = parser.parse_args()
 
 
-dataset = CircularDataset(args.path)
+camera = SisterCamera('/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml')
+
+dataset = CircularDataset(args.path, camera=camera)
 print(len(dataset.images), dataset.expected_images)
 
 if not os.path.exists(args.output_folder):

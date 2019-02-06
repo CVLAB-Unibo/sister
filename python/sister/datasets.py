@@ -11,10 +11,11 @@ class CircularDataset(object):
     DEFAULT_EXTENSION = 'png'
     NAMES = ['center', 'right', 'top', 'left', 'bottom']
 
-    def __init__(self, path, side=5, repetitions=1, extension='png'):
+    def __init__(self, path, side=5, repetitions=1, extension='png', camera=None):
         self.path = path
         self.images = sorted(glob.glob(os.path.join(self.path, "*."+extension)))
         self.images_pointer = 0
+        self.camera = camera
 
         self.expected_images = 1 + 1 + 1 + side * 4
 
@@ -52,7 +53,15 @@ class CircularDataset(object):
         return img
 
     def getImage(self, name):
-        return cv2.imread(self.image_map[name])
+        img = cv2.imread(self.image_map[name])
+        if self.camera is not None:
+            img2 = cv2.undistort(img, self.camera.camera_matrix, self.camera.distortions)
+            # diff = img.astype(float) - img2.astype(float)
+            # diff = (diff-np.min(diff))/(np.max(diff)-np.min(diff))
+            # cv2.imshow("diff", diff)
+            # cv2.waitKey(0)
+            return img2
+        return img
 
     def getImageByIndices(self, name, baseline_index):
         if name == 'center':
