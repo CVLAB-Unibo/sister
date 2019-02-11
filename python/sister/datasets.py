@@ -13,7 +13,10 @@ class CircularDataset(object):
 
     def __init__(self, path, side=5, repetitions=1, extension='png', camera=None):
         self.path = path
-        self.images = sorted(glob.glob(os.path.join(self.path, "*."+extension)))
+        if isinstance(path, str):
+            self.images = sorted(glob.glob(os.path.join(self.path, "*."+extension)))
+        elif isinstance(path, list):
+            self.images = path
         self.images_pointer = 0
         self.camera = camera
 

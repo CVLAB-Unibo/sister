@@ -18,7 +18,11 @@ class Utilities(object):
 
     @staticmethod
     def loadRangeImage(filename, scaling_factor=1./256.):
-        return cv2.imread(filename, cv2.IMREAD_ANYDEPTH) * scaling_factor
+        if 'exr' in filename:
+            img = cv2.imread(filename, cv2.IMREAD_ANYDEPTH) * scaling_factor
+            return img
+        else:
+            return cv2.imread(filename, cv2.IMREAD_ANYDEPTH) * scaling_factor
 
     @staticmethod
     def loadRGBImage(filename, color_code='RGB'):
