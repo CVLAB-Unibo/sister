@@ -38,7 +38,9 @@ disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_
 
 # DISPARITY SMOOTH
 for i in range(0):
-    disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 1110.5, 0)
+    disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 6, 6)
+for i in range(0):
+    disparity = cv2.medianBlur(disparity.astype(np.float32), 1)
 
 
 if args.is_depth:
@@ -57,7 +59,7 @@ if len(rgb_file) > 0:
 
 # DEPTH SMOOTH
 for i in range(0):
-    depth = cv2.bilateralFilter(depth.astype(np.float32), 5, 0.5, 0)
+    depth = cv2.bilateralFilter(depth.astype(np.float32), 5, 0.01, 0)
 
 
 # Cloud generation
