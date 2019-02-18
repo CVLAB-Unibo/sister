@@ -2,6 +2,8 @@
   <camera>
     <camera_matrix>528.580921 0. 334.548055 0. 528.000913 237.481637 0. 0. 1. </camera_matrix>
     <distortions>-0.010789 -0.047895 -0.001665 -0.000293  0.092976</distortions>
+    <sensor_size>3.984 2.952</sensor_size>
+    <pixel_size>0.006 0.006</pixel_size>
   </camera>
   <baseline>0.01</baseline>
   <min_distance>0.01</min_distance>

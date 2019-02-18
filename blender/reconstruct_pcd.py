@@ -28,6 +28,8 @@ parser.add_argument("--output_path", type=str, default="./outputs", help="where 
 parser.add_argument('--save_ply', dest='save_ply', action='store_true', help='save ply view')
 parser.set_defaults(save_ply=False)
 
+parser.add_argument('--worlds_coordinates', dest='worlds_coordinates', action='store_true', help='Transforms pcd in worlds coordinates')
+
 parser.add_argument('--visualize_ply', dest='visualize_ply', action='store_true', help='visualize ply')
 parser.set_defaults(visualize_ply=False)
 args=parser.parse_args()
@@ -43,14 +45,14 @@ def reconstruct_pcd(depth, focal_x, focal_y, c_x, c_y, th_depth=100):
         for j in range(depth.shape[0]):
         # i=75
         # j=383
-        if depth[j,i] < th_depth:
-            # p=np.dot(K_inv, np.asarray([i,j,1]))*depth[j,i]
-            # print(p)
-            px = (i - c_x) * depth[j,i] / focal_x
-            py = (j- c_y) * depth[j,i] / focal_y
-            pz = depth[j,i]
-            p=[px,py,pz]
-        pcd.append(p)
+            if depth[j,i] < th_depth:
+                # p=np.dot(K_inv, np.asarray([i,j,1]))*depth[j,i]
+                # print(p)
+                px = (i - c_x) * depth[j,i] / focal_x
+                py = (j- c_y) * depth[j,i] / focal_y
+                pz = depth[j,i]
+                p=[px,py,pz]
+                pcd.append(p)
     print("Total number of points:", len(pcd))
     return np.asarray(pcd)
 
@@ -73,13 +75,15 @@ else:
 
 xyz = reconstruct_pcd(depth, focalx_in_pixel, focaly_in_pixel, args.c_x, args.c_y)
 
-Tr=euler_matrix(rotation_camera[0],rotation_camera[1],rotation_camera[2],'sxyz')
-Tr[:,3]= np.asarray([translation_camera[0],translation_camera[1],translation_camera[2],1.0])
-Tr_inv = np.linalg.inv(Tr)
 
 pcd = PointCloud()
 pcd.points = Vector3dVector(xyz)
-pcd.transform(Tr_inv)
+
+if args.worlds_coordinates:
+    Tr=euler_matrix(rotation_camera[0],rotation_camera[1],rotation_camera[2],'sxyz')
+    Tr[:,3]= np.asarray([translation_camera[0],translation_camera[1],translation_camera[2],1.0])
+    Tr_inv = np.linalg.inv(Tr)
+    pcd.transform(Tr_inv)
 
 print("Time: ", datetime.timedelta(seconds=time.time() - start))
 

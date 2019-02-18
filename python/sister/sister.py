@@ -3,6 +3,7 @@ import numpy as np
 import xmltodict
 from open3d import *
 import open3d
+from open3d.open3d.geometry import TriangleMesh, PointCloud
 
 
 class Utilities(object):
@@ -58,7 +59,7 @@ class Utilities(object):
         return cloud
 
     @staticmethod
-    def meshFromPointCloud(cloud, color_image=None):
+    def meshFromPointCloud(cloud, color_image=None, max_perimeter_threshold=0.5):
         pcd = Utilities.createPcd(cloud)
         mesh = TriangleMesh()
 
@@ -88,20 +89,14 @@ class Utilities(object):
                     p2 = cloud[r+1, c, :]
                     p3 = cloud[r+1, c+1, :]
 
-                    # n1 = np.cross(p2-p0, p1-p0)
-                    # n1 = n1 / np.linalg.norm(n1)
-                    # normals[triangle_index, :] = n1
-
-                    # n2 = np.cross(p2-p1, p3-p1)
-                    # n2 = n2 / np.linalg.norm(n2)
-                    # normals[triangle_index+1, :] = n2
-
                     i0 = r * w + c
                     i1 = r * w + c + 1
                     i2 = (r+1)*w + c
                     i3 = (r+1)*w + c + 1
 
-                    if p1[2] < 0.01 or p2[2] < 0.01 or p3[2] < 0.01:
+                    perimeter = np.linalg.norm(p1-p2) + np.linalg.norm(p2-p3) + np.linalg.norm(p3-p1)
+
+                    if p1[2] < 0.01 or p2[2] < 0.01 or p3[2] < 0.01 or perimeter > max_perimeter_threshold:
                         triangles[triangle_index, :] = np.array([0, 0, 0])
                         triangles[triangle_index+1, :] = np.array([0, 0, 0])
                     else:
@@ -136,6 +131,8 @@ class Utilities(object):
 class Camera(object):
 
     def __init__(self, filename=None):
+        self.sensor_size = None
+        self.pixel_size = None
         if filename is not None:
             if '.txt' in filename:
                 self.camera_matrix = np.loadtxt(filename)
@@ -143,8 +140,26 @@ class Camera(object):
             elif '.xml' in filename:
                 doc = Utilities.loadXMLFile(filename)
                 print("D"*20, doc['sister_camera']['camera']['camera_matrix'])
+                self.image_size= np.fromstring(doc['sister_camera']['camera']['image_size'], sep=' ').reshape((2,))
                 self.camera_matrix = np.fromstring(doc['sister_camera']['camera']['camera_matrix'], sep=' ').reshape((3, 3))
                 self.distortions = np.fromstring(doc['sister_camera']['camera']['distortions'], sep=' ').reshape((1, -1))
+                try:
+                    self.sensor_size = np.fromstring(doc['sister_camera']['camera']['sensor_size'], sep=' ').reshape((2,))
+                    self.pixel_size = np.fromstring(doc['sister_camera']['camera']['pixel_size'], sep=' ').reshape((2,))
+                except Exception as e:
+                    print("Camera Sensor information missing!",e)
+
+        if self.sensor_size is not None:
+            self.fov_x, self.fov_y, self.focal_length, self.principal_point, self.aspect_ratio = cv2.calibrationMatrixValues(
+                self.camera_matrix,
+                tuple(self.image_size.astype(int)),
+                self.sensor_size[0],
+                self.sensor_size[1]
+            )
+
+
+
+
 
     def getCameraMatrix(self):
         return self.camera_matrix

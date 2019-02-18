@@ -7,9 +7,10 @@ import os
 import glob
 import cv2
 import time
+from open3d.open3d.geometry import write_point_cloud, write_triangle_mesh
+from open3d.open3d.visualization import draw_geometries
 from sister.sister import Utilities, Camera
 from open3d import *
-import open3d
 import argparse
 
 
@@ -60,6 +61,7 @@ if len(rgb_file) > 0:
 # DEPTH SMOOTH
 for i in range(0):
     depth = cv2.bilateralFilter(depth.astype(np.float32), 5, 0.01, 0)
+
 
 
 # Cloud generation
