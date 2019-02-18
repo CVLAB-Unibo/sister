@@ -3,7 +3,7 @@ import argparse
 import os
 from math import pi
 from mathutils import Vector
-from mathutils import Euler
+from mathutils import Euler, Quaternion
 import math
 import sys
 
@@ -22,7 +22,7 @@ if '--' in sys.argv:
 
     parser.add_argument('-resolution', '--resolution', dest='resolution', type=int, nargs='+', default=[640, 480], help='resolution of images format: width height')
 
-    parser.add_argument("-output_path","--output_path", type=str, default="./output", help="where output files will be stored")
+    parser.add_argument("-output_path","--output_path", type=str, default="/tmp/sister_output", help="where output files will be stored")
 
     parser.add_argument('-save_depth', '--save_depth', dest='save_depth', action='store_true', help='save rgb render')
     parser.set_defaults(save_depth=False)
@@ -42,8 +42,12 @@ def set_camera_params(focal_mm, sens_w, T, R, name='Camera'):
 
     cam_obj = bpy.data.objects[name]
     cam_obj.location = Vector((T[0],T[1],T[2]))
-    cam_obj.rotation_mode = 'XYZ'
-    cam_obj.rotation_euler = Euler((R[0],R[1],R[2]),'XYZ')
+    if len(R) == 3:
+        cam_obj.rotation_mode = 'XYZ'
+        cam_obj.rotation_euler = Euler((R[0], R[1], R[2]), 'XYZ')
+    elif len(R) == 4:
+        cam_obj.rotation_mode = 'QUATERNION'
+        cam_obj.rotation_quaternion = Quaternion((R[0], R[1], R[2], R[3]))
 
 def set_scene_render_params(res_x, res_y, output_path, name_scene="Scene"):
     bpy.data.scenes[name_scene].render.resolution_x = res_x

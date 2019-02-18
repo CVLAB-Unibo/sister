@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a4bc982-2aa2-4abb-92d3-254e660d5306" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../data/scripts/rgb_mesh_sample.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../data/scripts/rgbd_mesh_sample.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../python/temp/camera_print.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../blender/outputs/Image/Image.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../blender/outputs/Image/Image.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../blender/reconstruct_pcd.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../blender/reconstruct_pcd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../blender/scene_blender.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../blender/scene_blender.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/calibration_plate/.~lock.calbration_plate_001.odg#" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/cameras/usb_camera.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/cameras/usb_camera.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../data/cameras/usb_camera_1cm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/cameras/usb_camera_1cm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python/sister/sister.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../python/sister/sister.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python/test_rf.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../python/test_rf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../blender/batch_rendering.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/detect_markers_over_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/sister/transformations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/temp/test_alignment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/temp/test_synthetic_images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blender/blender_render.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blender/blender_render.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blender/outputs/Image/Image.png" beforeDir="false" afterPath="$PROJECT_DIR$/../blender/outputs/Image/Image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blender/outputs/Pcd/pcd.ply" beforeDir="false" afterPath="$PROJECT_DIR$/../blender/outputs/Pcd/pcd.ply" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blender/reconstruct_pcd.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blender/reconstruct_pcd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blender/scene_blender.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../blender/scene_blender.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/sister/sister.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/sister/sister.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/test_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/test_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/test_rf.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/test_rf.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,98 +32,68 @@
     <SUITE FILE_PATH="coverage/_$sister.coverage" NAME="sister Coverage Results" MODIFIED="1550245277333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python/sister" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../python/test_rf.py">
+        <entry file="file://$PROJECT_DIR$/../sister_ros/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+            <state relative-caret-position="-3780">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../python/sister/sister.py">
+        <entry file="file://$PROJECT_DIR$/../smatch/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="152" column="66" selection-start-line="152" selection-start-column="66" selection-end-line="152" selection-end-column="66" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-80">
+              <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../smatch/src/run.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="434" column="117" selection-start-line="434" selection-start-column="117" selection-end-line="434" selection-end-column="117" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../blender/reconstruct_pcd.py">
+        <entry file="file://$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="30" column="134" selection-start-line="30" selection-start-column="134" selection-end-line="30" selection-end-column="134" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="336">
+              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../blender/scene_blender.sh">
+        <entry file="file://$PROJECT_DIR$/../python/test_rf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="259">
+              <caret line="58" column="49" lean-forward="true" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../blender/utils_transform.py">
+        <entry file="file://$PROJECT_DIR$/../python/sister/sister.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8221" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../python/temp/camera_print.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="169">
+              <caret line="208" lean-forward="true" selection-start-line="208" selection-end-line="208" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../data/scripts/rgb_mesh_sample.sh">
+        <entry file="file://$PROJECT_DIR$/../data/scripts/rgbd_mesh_sample.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="116">
+              <caret line="12" column="23" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera_1cm.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera_1.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -134,34 +108,54 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>worlds_coordinates</find>
+      <find>quaternion</find>
+      <find>from_quate</find>
+      <find>quaternion_matrix</find>
+      <find>quaternion_matrix(</find>
+      <find>rotation_camera</find>
+      <find>sens_w</find>
+      <find>set_camera_params</find>
+      <find>sensor_width</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/python/test_rf.py" />
-        <option value="$PROJECT_DIR$/../python/test_rf.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.sh" />
-        <option value="$PROJECT_DIR$/../python/sister/sister.py" />
         <option value="$PROJECT_DIR$/../data/scripts/rgbd_mesh_sample.sh" />
-        <option value="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" />
         <option value="$PROJECT_DIR$/../../data/cameras/usb_camera_1cm.xml" />
-        <option value="$PROJECT_DIR$/../../data/cameras/usb_camera.xml" />
-        <option value="$PROJECT_DIR$/../../python/sister/sister.py" />
-        <option value="$PROJECT_DIR$/../../python/temp/camera_print.py" />
-        <option value="$PROJECT_DIR$/../../blender/scene_blender.sh" />
+        <option value="$PROJECT_DIR$/../temp/camera_print.py" />
+        <option value="$PROJECT_DIR$/../../blender/blender_render.py" />
         <option value="$PROJECT_DIR$/../../blender/reconstruct_pcd.py" />
+        <option value="$PROJECT_DIR$/../../blender/blender_synth.py" />
+        <option value="$PROJECT_DIR$/../detect_markers_over_dataset.py" />
+        <option value="$PROJECT_DIR$/../../README.md" />
+        <option value="$PROJECT_DIR$/../sister/transformations.py" />
+        <option value="$PROJECT_DIR$/../temp/test_synthetic_images.py" />
+        <option value="$PROJECT_DIR$/../../blender/scene_blender.sh" />
+        <option value="$PROJECT_DIR$/../../blender/batch_rendering.py" />
+        <option value="$PROJECT_DIR$/../temp/test_alignment.py" />
+        <option value="$PROJECT_DIR$/../sister/sister.py" />
+        <option value="$PROJECT_DIR$/../../data/cameras/usb_camera.xml" />
+        <option value="$PROJECT_DIR$/../../data/scripts/rgb_mesh_sample.sh" />
+        <option value="$PROJECT_DIR$/../test_dataset.py" />
+        <option value="$PROJECT_DIR$/../sister_ros/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/../smatch/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/../python/sister/sister.py" />
+        <option value="$PROJECT_DIR$/../python/test_rf.py" />
+        <option value="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="295" />
-    <option name="y" value="128" />
-    <option name="width" value="1395" />
-    <option name="height" value="821" />
+    <option name="x" value="64" />
+    <option name="y" value="-4" />
+    <option name="width" value="1857" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -171,7 +165,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -182,18 +175,7 @@
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="blender" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="cameras" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
@@ -206,35 +188,25 @@
               <item name="sister" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="python" type="462c0819:PsiDirectoryNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Bash" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.." />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../../blender" />
       <recent name="$PROJECT_DIR$/../data/scripts" />
     </key>
   </component>
@@ -357,19 +329,31 @@
       <workItem from="1550244126673" duration="13000" />
       <workItem from="1550244151220" duration="135000" />
       <workItem from="1550244330256" duration="2726000" />
-      <workItem from="1550480411317" duration="2517000" />
+      <workItem from="1550480411317" duration="15175000" />
+      <workItem from="1550508355914" duration="3000" />
+      <workItem from="1550508383298" duration="19000" />
+      <workItem from="1550508417135" duration="1896000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7139000" />
+    <option name="totallyTimeSpent" value="21715000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25428414" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49841774" visible="true" weight="0.26644555" />
+      <window_info id="Structure" order="1" sideWeight="0.50158226" side_tool="true" weight="0.25428414" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -377,12 +361,12 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978448" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32979852" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32979852" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32979852" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32979852" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -413,13 +397,6 @@
     <entry file="file://$USER_HOME$/anaconda3/envs/torch/lib/python3.6/site-packages/open3d/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/cv2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="8025" column="4" selection-start-line="8025" selection-start-column="4" selection-end-line="8025" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rgbd_mesh_sample.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -427,83 +404,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../data/scripts/rgbd_mesh_sample.sh">
+    <entry file="file://$PROJECT_DIR$/../../data/scripts/rgbd_mesh_sample.sh" />
+    <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera_1.txt" />
+    <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera_1cm.xml" />
+    <entry file="file://$PROJECT_DIR$/../temp/camera_print.py" />
+    <entry file="file://$PROJECT_DIR$/../compare_clouds.py" />
+    <entry file="file://$PROJECT_DIR$/../generate_point_cloud.py" />
+    <entry file="file://$PROJECT_DIR$/../../README.md" />
+    <entry file="file://$PROJECT_DIR$/../sister/transformations.py" />
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/cv2/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="111" selection-start-line="6" selection-start-column="111" selection-end-line="6" selection-end-column="111" />
+        <state relative-caret-position="301">
+          <caret line="8025" column="4" selection-start-line="8025" selection-start-column="4" selection-end-line="8025" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../data/scripts/rgb_mesh_sample.sh">
+    <entry file="file://$PROJECT_DIR$/../detect_markers_over_dataset.py" />
+    <entry file="file://$PROJECT_DIR$/../../blender/scene_blender.sh" />
+    <entry file="file://$PROJECT_DIR$/../../blender/blender_render.py" />
+    <entry file="file://$PROJECT_DIR$/../../blender/batch_rendering.py" />
+    <entry file="file://$PROJECT_DIR$/../../blender/utils_transform.py" />
+    <entry file="file://$PROJECT_DIR$/../temp/test_synthetic_images.py" />
+    <entry file="file://$PROJECT_DIR$/../temp/test_alignment.py" />
+    <entry file="file://$PROJECT_DIR$/../../blender/reconstruct_pcd.py" />
+    <entry file="file://$PROJECT_DIR$/../test_rf.py" />
+    <entry file="file://$PROJECT_DIR$/../sister/sister.py" />
+    <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera.xml" />
+    <entry file="file://$PROJECT_DIR$/../../data/scripts/rgb_mesh_sample.sh" />
+    <entry file="file://$PROJECT_DIR$/../sister/datasets.py" />
+    <entry file="file://$PROJECT_DIR$/../test_dataset.py" />
+    <entry file="file://$PROJECT_DIR$/../../smatch/src/run.cpp" />
+    <entry file="file://$PROJECT_DIR$/../../smatch/src/makefile" />
+    <entry file="file://$PROJECT_DIR$/../../smatch/CMakeLists.txt" />
+    <entry file="file://$PROJECT_DIR$/../sister_ros/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="-3780">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera_1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera_1cm.xml">
+    <entry file="file://$PROJECT_DIR$/../smatch/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        <state relative-caret-position="-80">
+          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../python/test_rf.py">
+    <entry file="file://$PROJECT_DIR$/../smatch/src/run.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        <state relative-caret-position="110">
+          <caret line="434" column="117" selection-start-line="434" selection-start-column="117" selection-end-line="434" selection-end-column="117" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../python/temp/camera_print.py">
+    <entry file="file://$PROJECT_DIR$/../python/sister/sister.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="169">
+          <caret line="208" lean-forward="true" selection-start-line="208" selection-end-line="208" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera.xml">
+    <entry file="file://$PROJECT_DIR$/../python/test_rf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        <state relative-caret-position="259">
+          <caret line="58" column="49" lean-forward="true" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../python/sister/sister.py">
+    <entry file="file://$PROJECT_DIR$/../data/scripts/rgbd_mesh_sample.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="152" column="66" selection-start-line="152" selection-start-column="66" selection-end-line="152" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="116">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../blender/utils_transform.py">
+    <entry file="file://$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8221" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../blender/scene_blender.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../blender/reconstruct_pcd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="30" column="134" selection-start-line="30" selection-start-column="134" selection-end-line="30" selection-end-column="134" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="336">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
         </state>
       </provider>
     </entry>

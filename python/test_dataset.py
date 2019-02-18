@@ -22,7 +22,7 @@ args = parser.parse_args()
 
 camera = SisterCamera('/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml')
 
-side = 5
+side = 1
 center_cross = 3
 n = side * 4 + center_cross
 
@@ -50,7 +50,7 @@ else:
     for i in range(0, subsets):
         subimages = list(images[i*n:(i+1)*n])
         print("SUBIMAGES", subimages)
-        dataset = CircularDataset(subimages, camera=camera)
+        dataset = CircularDataset(subimages,side=side, camera=camera)
         print("Subsets {} -> {} ".format(i, len(subimages)))
 
         output_folder = os.path.join(args.output_folder, "subset_{}_baseline_{}".format(i, args.baseline_index))

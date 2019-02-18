@@ -11,14 +11,14 @@ from utils_transform import euler_matrix
 parser = argparse.ArgumentParser(description="Sister Ply Reconstruction Tool")
 parser.add_argument("--sensor_width", dest='sensor_width', type=float, default=32,  help="sensor width in mm")
 
-parser.add_argument("--focal_x", dest='focal_x', type=float, default=528, help="camera focal lenght in mm or pixel")
-parser.add_argument("--focal_y", dest='focal_y', type=float, default=528, help="camera focal lenght in mm or pixel")
+parser.add_argument("--focal_x", dest='focal_x', type=float, default=528.580921, help="camera focal lenght in mm or pixel")
+parser.add_argument("--focal_y", dest='focal_y', type=float, default=528.000913, help="camera focal lenght in mm or pixel")
 
 parser.add_argument('--focal_in_mm', dest='focal_in_mm', action='store_true', help='consider focal lenght in mm, default in pixel')
 parser.set_defaults(focal_in_mm=False)
 
-parser.add_argument("--c_x", dest='c_x', type=float, default=320 , help="c_x") #334.548055
-parser.add_argument("--c_y", dest='c_y', type=float, default=240 , help="c_y") #237.481637
+parser.add_argument("--c_x", dest='c_x', type=float, default=334.548055 , help="c_x") #334.548055
+parser.add_argument("--c_y", dest='c_y', type=float, default=237.481637 , help="c_y") #237.481637
 
 parser.add_argument('--extrinsics', dest='extrinsics', type=float, nargs='+', default=[0.017586899921298027, -0.09221349656581879, 0.30974799394607544, 0.017355073243379593, 0.021796815097332, -1.5809646844863892], help='extrinscs in format Tx Ty Tz Rx Ry Rz, meter and radians')
 

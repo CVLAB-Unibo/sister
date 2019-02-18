@@ -59,6 +59,37 @@ class Utilities(object):
         return cloud
 
     @staticmethod
+    def reconstruct_pcd(depth, camera_matrix, th_depth = 100):
+        pcd = []
+        fx = camera_matrix[0, 0]
+        fy = camera_matrix[1, 1]
+        cx = camera_matrix[0, 2]
+        cy = camera_matrix[1, 2]
+
+
+        # K = np.asarray([[focal_x, 0 ,c_x],
+        #      [0 , focal_y ,c_y],
+        #      [0, 0 ,1]])
+        # print(K)
+        # K_inv = np.linalg.inv(K)
+        for j in range(depth.shape[0]):
+            for i in range(depth.shape[1]):
+
+                # i=75
+                # j=383
+                if depth[j, i] < th_depth:
+                    # p=np.dot(K_inv, np.asarray([i,j,1]))*depth[j,i]
+                    # print(p)
+                    px = (i - cx) * depth[j, i] / fx
+                    py = (j - cy) * depth[j, i] / fy
+                    pz = depth[j, i]
+                    p = [px, py, pz]
+                    pcd.append(p)
+        print("Total number of points:", len(pcd))
+        return np.asarray(pcd)
+
+
+    @staticmethod
     def meshFromPointCloud(cloud, color_image=None, max_perimeter_threshold=0.5):
         pcd = Utilities.createPcd(cloud)
         mesh = TriangleMesh()
@@ -178,6 +209,7 @@ class Camera(object):
 
     def depthMapToPointCloud(self, depth):
         return Utilities.depthMapToPointCloud(depth, self.camera_matrix)
+        #return Utilities.reconstruct_pcd(depth, self.camera_matrix)
 
 
 class SisterCamera(Camera):
