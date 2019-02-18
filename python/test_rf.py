@@ -40,8 +40,8 @@ disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_
 # DISPARITY SMOOTH
 for i in range(0):
     disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 6, 6)
-for i in range(0):
-    disparity = cv2.medianBlur(disparity.astype(np.float32), 1)
+for i in range(1):
+    disparity = cv2.medianBlur(disparity.astype(np.float32), 5)
 
 
 if args.is_depth:
@@ -59,7 +59,7 @@ if len(rgb_file) > 0:
     rgb = cv2.cvtColor(cv2.imread(rgb_file), cv2.COLOR_BGR2RGB)
 
 # DEPTH SMOOTH
-for i in range(10):
+for i in range(0):
     depth = cv2.bilateralFilter(depth.astype(np.float32), 5, 0.01, 0)
 
 
