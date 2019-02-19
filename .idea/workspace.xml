@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a4bc982-2aa2-4abb-92d3-254e660d5306" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../dataset/cads/component_0J/component_0J.stp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/cads/component_1B/component_1B.stp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/cads/component_1G/component_1G.stp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/cads/hexa_nut/hexa_nut.skp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/cads/hexa_screw/hexa_screw.skp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/cads/nodemcu/nodemcu.stp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/cads/washer/washer.skp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/models/arduino/arduino.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/models/component_0J/component_0J.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/models/component_1B/component_1B.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/models/component_1G/component_1G.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/models/hexa_nut/hexa_nut.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/models/hexa_screw/hexa_screw.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/models/nodemcu/nodemcu.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/models/washer/washer.stl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python/test_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/test_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python/test_rf.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/test_rf.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/../python/sister/sister.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="169">
-              <caret line="208" lean-forward="true" selection-start-line="208" selection-end-line="208" />
+              <caret line="208" selection-start-line="208" selection-end-line="208" />
             </state>
           </provider>
         </entry>
@@ -168,28 +181,6 @@
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="sister" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="calibration_plate" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="python" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -336,12 +327,12 @@
       <workItem from="1550480411317" duration="15175000" />
       <workItem from="1550508355914" duration="3000" />
       <workItem from="1550508383298" duration="19000" />
-      <workItem from="1550508417135" duration="8365000" />
+      <workItem from="1550508417135" duration="8969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28184000" />
+    <option name="totallyTimeSpent" value="28788000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -354,9 +345,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49841774" visible="true" weight="0.26644555" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49841774" visible="true" weight="0.26644555" />
       <window_info id="Structure" order="1" sideWeight="0.50158226" side_tool="true" weight="0.25428414" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -370,7 +360,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32979852" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32979852" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32979852" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32979852" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32979852" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -464,7 +454,7 @@
     <entry file="file://$PROJECT_DIR$/../python/sister/sister.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
-          <caret line="208" lean-forward="true" selection-start-line="208" selection-end-line="208" />
+          <caret line="208" selection-start-line="208" selection-end-line="208" />
         </state>
       </provider>
     </entry>
