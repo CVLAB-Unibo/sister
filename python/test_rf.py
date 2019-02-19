@@ -36,12 +36,12 @@ rgb_file = args.rgb_file
 
 # Disparity&Depth
 disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_factor)
-
+disparity = disparity[:1080,::]
 # DISPARITY SMOOTH
-for i in range(1):
-    disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 6, 6)
-for i in range(1):
-    disparity = cv2.medianBlur(disparity.astype(np.float32), 5)
+#for i in range(1):
+#    disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 6, 6)
+#for i in range(1):
+#    disparity = cv2.medianBlur(disparity.astype(np.float32), 5)
 
 
 if args.is_depth:
@@ -72,6 +72,7 @@ cloud = camera.depthMapToPointCloud(depth)
 
 
 if args.visualization_type == 'pcd':
+
     pcd = Utilities.createPcd(cloud, color_image=rgb)
     draw_geometries([pcd])
     write_point_cloud('/tmp/cloud.ply', pcd)

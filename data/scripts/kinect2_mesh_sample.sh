@@ -2,18 +2,19 @@
 
 #!/usr/bin/env bash
 
-CAMERA_FILE=/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml
-RGB_FILE=/home/daniele/Desktop/temp/RobotStereoExperiments/Datasets/objects_test_0/object_1_baseline_0/00000_center.png
-DEPTH_FILE=/home/daniele/Downloads/obiects_maps/object_1_baseline_0/mccnn-raw.png
+CAMERA_FILE=/home/daniele/work/workspace_python/sister/data/cameras/kinect2.xml
+RGB_FILE=/home/daniele/Downloads/SiSter-sgm/RGB3155.png
+DEPTH_FILE=/home/daniele/Downloads/SiSter-sgm/DepthBig3155.tiff
 BASELINE=0.005
 MIN_DISTANCE=0.005
-MAX_DISTANCE=0.08
+MAX_DISTANCE=0.6
 SCALING_FACTOR=1
-IS_DEPTH=0
-VISUALIZATION_TYPE=mesh
+IS_DEPTH=1
+VISUALIZATION_TYPE=pcd
 
 
 python /home/daniele/work/workspace_python/sister/python/test_rf.py \
+--is_depth 1 \
 --camera_file $CAMERA_FILE \
 --depth_file $DEPTH_FILE \
 --rgb_file $RGB_FILE \
