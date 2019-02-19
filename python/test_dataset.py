@@ -17,13 +17,16 @@ parser = argparse.ArgumentParser("Test Dataset")
 parser.add_argument("--path", help="Dataset Path", type=str, required=True)
 parser.add_argument("--output_folder", help="Output Folder", type=str, required=True)
 parser.add_argument("--baseline_index", help="Baseline index [0,1,2,3,4]", type=int, required=True)
+parser.add_argument("--side", help="How many side? E.g. how many baselines changes?", type=int, default=1)
+parser.add_argument("--center_cross", help="How many center images are stored?", type=int, default=3)
+parser.add_argument("--prefix", help="Prefix name", type=str, default="subset_")
 args = parser.parse_args()
 
 
 camera = SisterCamera('/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml')
 
-side = 1
-center_cross = 3
+side = args.side
+center_cross = args.center_cross
 n = side * 4 + center_cross
 
 images = sorted(glob.glob(os.path.join(args.path, "*.png")))
@@ -53,7 +56,7 @@ else:
         dataset = CircularDataset(subimages,side=side, camera=camera)
         print("Subsets {} -> {} ".format(i, len(subimages)))
 
-        output_folder = os.path.join(args.output_folder, "subset_{}_baseline_{}".format(i, args.baseline_index))
+        output_folder = os.path.join(args.output_folder, "{}{}_baseline_{}".format(args.prefix, i, args.baseline_index))
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
 
