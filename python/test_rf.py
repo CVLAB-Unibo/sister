@@ -36,7 +36,8 @@ rgb_file = args.rgb_file
 
 # Disparity&Depth
 disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_factor)
-disparity = disparity[:1080,::]
+disparity = disparity[:1080, ::]
+
 # DISPARITY SMOOTH
 for i in range(0):
     disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 6, 6)

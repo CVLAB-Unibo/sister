@@ -12,54 +12,77 @@ import argparse
 import xmltodict
 from sister.datasets import CircularDataset
 from sister.sister import SisterCamera
+import sister.transformations as trans
 
 parser = argparse.ArgumentParser("Export Raw Dataset")
 parser.add_argument("--path", help="Dataset Path", type=str, required=True)
 parser.add_argument("--output_folder", help="Output Folder", type=str, required=True)
-parser.add_argument("--baseline_index", help="Baseline index [0,1,2,3,4]", type=int, required=True)
+parser.add_argument("--subfolders_for_results", help="Creates a subfolders for results with this name if any", type=str, default="output")
+parser.add_argument('--baselines', nargs='+', help='<Required> List of baselines contained in the raw dataset',
+                    required=True)
 parser.add_argument("--side", help="How many side? E.g. how many baselines changes?", type=int, default=1)
 parser.add_argument("--center_cross", help="How many center images are stored?", type=int, default=3)
-parser.add_argument("--prefix", help="Prefix name", type=str, default="subset_")
+parser.add_argument("--prefix", help="Prefix name", type=str, default="level_")
 args = parser.parse_args()
-
 
 camera = SisterCamera('/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml')
 
-side = args.side
-center_cross = args.center_cross
-n = side * 4 + center_cross
+baselines = args.baselines
 
 images = sorted(glob.glob(os.path.join(args.path, "*.png")))
+
+# Count
+total = len(images)
+center_cross = args.center_cross
+n =  4 + center_cross
+bs = len(baselines)
+hs = int(total / (n*bs))
+print(baselines, bs, hs)
 
 if len(images) % n == 0:
     print("Number of images is ok!")
 
+if bs * hs == total:
+    print("Number of baselines and heights is congruent!")
 
-subsets = int(len(images) / n)
-print("Subsets found: ", subsets)
-
-for i in range(0, subsets):
-    subimages = list(images[i*n:(i+1)*n])
-    print("SUBIMAGES", subimages)
-    dataset = CircularDataset(subimages, side=side, camera=camera)
-    print("Subsets {} -> {} ".format(i, len(subimages)))
-
-    output_folder = os.path.join(args.output_folder, "{}{}_baseline_{}".format(args.prefix, i, args.baseline_index))
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-
-    dataset.export(output_folder, baseline_index=args.baseline_index)
+subsets = []
+for i in range(0, len(images), n):
+    subset = images[i:i+n]
+    subsets.append(subset)
 
 
+i = 0
+for h in range(hs):
+    for b in baselines:
+        subset = subsets.pop(0)
+        for i in range(n):
+            name = CircularDataset.NAMES_FLOW[i]
+            image_path = subset[i]
+            pose_path = CircularDataset.getCorrespondingPose(image_path)
+            print(name, image_path, pose_path)
+            output_name = "{}_{}.{}".format(str(0).zfill(CircularDataset.GLOBAL_ZFILL), name, "png")
+            pose_output_name = "{}_{}.{}".format(str(0).zfill(CircularDataset.GLOBAL_ZFILL), name, "txt")
 
-print(len(images))
-sys.exit(0)
+            image = cv2.imread(image_path)
+            pose = trans.matrix_from_pose(np.loadtxt(pose_path))
+
+            output_folder = os.path.join(args.output_folder, "{}{}_{}".format(
+                args.prefix,
+                h,
+                b
+            ))
 
 
-# cv2.imshow("center", dataset.getImage('center'))
-# cv2.imshow("bottom_00", dataset.getImage('bottom_00'))
-# cv2.imshow("top_00", dataset.getImage('top_00'))
-# cv2.imshow("left_00", dataset.getImage('left_00'))
-# cv2.imshow("right_00", dataset.getImage('right_00'))
+            if not os.path.exists(output_folder):
+                os.makedirs(output_folder)
 
-# cv2.waitKey(0)
+            subfolder = os.path.join(output_folder, args.subfolders_for_results)
+            if not os.path.exists(subfolder):
+                os.makedirs(subfolder)
+
+            cv2.imwrite(os.path.join(output_folder, output_name), image)
+            np.savetxt(os.path.join(output_folder, pose_output_name), pose)
+
+
+
+

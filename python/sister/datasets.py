@@ -10,6 +10,7 @@ class CircularDataset(object):
     GLOBAL_ZFILL = 5
     DEFAULT_EXTENSION = 'png'
     NAMES = ['center', 'right', 'top', 'left', 'bottom']
+    NAMES_FLOW = ['center', 'bottom', 'center', 'top', 'left', 'center', 'right']
     IMAGE_PREFIX = "frame_"
     POSE_PREFIX = "pose_"
 
@@ -110,3 +111,56 @@ class CircularDataset(object):
         for k, v in files_map.items():
             cv2.imwrite(os.path.join(output_path, v), self.getImageByIndices(k, baseline_index))
             np.savetxt(os.path.join(output_path, pose_files_map[k]), self.getPoseByIndices(k, baseline_index))
+
+    @staticmethod
+    def getCorrespondingPose(image_path):
+        ext = os.path.splitext(image_path)[1]
+        return image_path.replace(ext, ".txt").replace(CircularDataset.IMAGE_PREFIX, CircularDataset.POSE_PREFIX)
+
+
+class CircularFrame(object):
+    NAMES = ['center','left','right','top','bottom']
+
+    def __init__(self, path, extension = "png"):
+        self.path = path
+        self.images = sorted(glob.glob(os.path.join(path, '*.' + extension)))[:5]
+
+        self.images_map = {}
+        self.poses = {}
+
+        for image_path in self.images:
+            for n in CircularFrame.NAMES:
+                if n in image_path:
+                    self.images_map[n] = image_path
+                    self.poses[n] = np.loadtxt(image_path.replace("."+extension, ".txt"))
+
+        if len(self.images_map) != 5:
+            print("Frame error in size!")
+            import sys
+            sys.exit(0)
+
+    def getImage(self, name):
+        if name in self.images_map:
+            return cv2.cvtColor(cv2.imread(self.images_map[name]), cv2.COLOR_BGR2RGB)
+        return None
+
+    def getPose(self,name):
+        if name in self.poses:
+            return self.poses[name]
+        else:
+            return np.eye(4)
+
+    def baseline(self):
+        return self.computeDistance('center', 'bottom')
+
+    def computeDistance(self, n1,n2):
+        p1 = self.poses[n1][:3,3]
+        p2 = self.poses[n2][:3,3]
+        return np.linalg.norm(p1- p2)
+
+
+
+
+
+
+    

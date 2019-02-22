@@ -7,4 +7,3 @@ Multi-view robotic stereo...
 
 python/detect_markers_over_dataset.py
 
-

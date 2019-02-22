@@ -3,14 +3,14 @@
 #!/usr/bin/env bash
 
 CAMERA_FILE=/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml
-RGB_FILE=/tmp/plinietto/subset_5_baseline_0/00000_center.png
-DEPTH_FILE=/tmp/plinietto/subset_5_baseline_0/00000_NO_LR_disparity_horizontal.png
-BASELINE=0.12
-MIN_DISTANCE=0.005
-MAX_DISTANCE=0.7
+RGB_FILE=/home/daniele/data/datasets/sister/v1/quality_scenes/nutsbin/level_1_010/00000_center.png
+DEPTH_FILE=/home/daniele/data/datasets/sister/v1/quality_scenes/nutsbin/level_1_010/output/00000_classical_multiview.png
+BASELINE=0.01
+MIN_DISTANCE=0.01
+MAX_DISTANCE=0.1
 SCALING_FACTOR=256
 IS_DEPTH=0
-VISUALIZATION_TYPE=pcd
+VISUALIZATION_TYPE=mesh
 
 
 
