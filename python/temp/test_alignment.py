@@ -3,6 +3,9 @@ from open3d import *
 import numpy as np
 import copy
 
+from open3d.open3d.registration import registration_icp, TransformationEstimationPointToPoint
+
+
 def draw_registration_result(source, target, transformation):
     source_temp = copy.deepcopy(source)
     target_temp = copy.deepcopy(target)
@@ -11,19 +14,19 @@ def draw_registration_result(source, target, transformation):
     source_temp.transform(transformation)
     draw_geometries([source_temp, target_temp])
 
-path1 = '/tmp/cloud.ply'
-path2 = '/tmp/sister_output/Pcd/pcd.ply'
+path1 = '/home/daniele/work/workspace_python/sister/dataset/clouds/component_0J/component_0J.ply'
+#path2 = '/tmp/cloud.ply'
+path2 = '/tmp/cloud.ply'
 
 source = read_point_cloud(path1)
 target = read_point_cloud(path2)
 
-threshold = 0.02
-trans_init = np.asarray(
-                [[0.862, 0.011, -0.507,  0.0],
-                [-0.139, 0.967, -0.215,  0.0],
-                [0.487, 0.255,  0.835, -0.0],
-                [0.0, 0.0, 0.0, 1.0]])
-trans_init = np.eye(4)
+trans_init = np.loadtxt('/tmp/unity_support_test.0').reshape((4,4))
+
+threshold = 0.0005
+trans_init[:3,3] = np.array([0.,0.,0.602]).reshape((3,))
+
+
 draw_registration_result(source, target, trans_init)
 print("Initial alignment")
 evaluation = evaluate_registration(source, target,

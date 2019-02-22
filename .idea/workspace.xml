@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a4bc982-2aa2-4abb-92d3-254e660d5306" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../data/cameras/kinect2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/export_raw_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dataset/models/washer/washer.stl" beforeDir="false" afterPath="$PROJECT_DIR$/../dataset/models/washer/washer.stl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python/sister/sister.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/sister/sister.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/sister/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/sister/datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/temp/test_alignment.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/temp/test_alignment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python/test_rf.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/test_rf.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,12 +21,26 @@
     <SUITE FILE_PATH="coverage/sister$test_rf.coverage" NAME="test_rf Coverage Results" MODIFIED="1550242866272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/_$sister.coverage" NAME="sister Coverage Results" MODIFIED="1550245277333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python/sister" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../sister_ros/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3780">
+            <state relative-caret-position="1092">
               <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
@@ -35,35 +49,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../smatch/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-80">
-              <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+            <state relative-caret-position="84">
+              <caret line="3" column="73" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../smatch/src/run.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="434" column="117" selection-start-line="434" selection-start-column="117" selection-end-line="434" selection-end-column="117" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+            <state relative-caret-position="-79">
+              <caret line="6" column="82" selection-start-line="6" selection-start-column="82" selection-end-line="6" selection-end-column="82" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../data/cameras/kinect2.xml">
+        <entry file="file://$PROJECT_DIR$/../python/temp/test_alignment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+            <state relative-caret-position="399">
+              <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+            <state relative-caret-position="336">
+              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -80,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python/test_dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="58" column="96" selection-start-line="58" selection-start-column="96" selection-end-line="58" selection-end-column="96" />
+            <state relative-caret-position="336">
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -89,8 +97,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python/test_rf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+            <state relative-caret-position="308">
+              <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../python/export_raw_dataset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../python/sister/datasets.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -100,15 +126,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-45">
               <caret line="22" column="58" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../data/scripts/rgbd_mesh_sample.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="12" column="23" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -135,6 +152,8 @@
       <find>sensor_width</find>
       <find>xrf</find>
       <find>xr</find>
+      <find>popImage</find>
+      <find>self.poses</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,13 +182,16 @@
         <option value="$PROJECT_DIR$/../../data/scripts/rgb_mesh_sample.sh" />
         <option value="$PROJECT_DIR$/../test_dataset.py" />
         <option value="$PROJECT_DIR$/../sister_ros/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/../smatch/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/../python/test_dataset.py" />
         <option value="$PROJECT_DIR$/../data/cameras/kinect2.xml" />
-        <option value="$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh" />
         <option value="$PROJECT_DIR$/../python/sister/sister.py" />
-        <option value="$PROJECT_DIR$/../python/test_rf.py" />
+        <option value="$PROJECT_DIR$/../smatch/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" />
+        <option value="$PROJECT_DIR$/../python/temp/test_alignment.py" />
+        <option value="$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh" />
+        <option value="$PROJECT_DIR$/../python/test_rf.py" />
+        <option value="$PROJECT_DIR$/../python/export_raw_dataset.py" />
+        <option value="$PROJECT_DIR$/../python/sister/datasets.py" />
       </list>
     </option>
   </component>
@@ -203,12 +225,6 @@
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="sister" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="cameras" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="." type="b2602c69:ProjectViewProjectNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -219,13 +235,22 @@
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="python" type="462c0819:PsiDirectoryNode" />
-              <item name="sister" type="462c0819:PsiDirectoryNode" />
+              <item name="sister_ros" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="sister" type="462c0819:PsiDirectoryNode" />
               <item name="sister_ros" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sister" type="462c0819:PsiDirectoryNode" />
+              <item name="smatch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -243,6 +268,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../python" />
       <recent name="$PROJECT_DIR$/../data/scripts" />
       <recent name="$PROJECT_DIR$/../data/cameras" />
       <recent name="$PROJECT_DIR$/../../blender" />
@@ -373,12 +399,12 @@
       <workItem from="1550480411317" duration="15175000" />
       <workItem from="1550508355914" duration="3000" />
       <workItem from="1550508383298" duration="19000" />
-      <workItem from="1550508417135" duration="12195000" />
+      <workItem from="1550508417135" duration="30146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32014000" />
+    <option name="totallyTimeSpent" value="49965000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -391,7 +417,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49841774" visible="true" weight="0.26644555" />
       <window_info id="Structure" order="1" sideWeight="0.50158226" side_tool="true" weight="0.25428414" />
@@ -406,14 +431,14 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32979852" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32979852" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32979852" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32979852" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501382" side_tool="true" weight="0.32979852" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.498618" weight="0.32979852" />
+      <window_info active="true" anchor="bottom" x="81" y="685" width="1809" height="358" id="Terminal" order="12" sideWeight="0.4991708" visible="true" weight="0.32873806" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32946378" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32946378" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,20 +502,6 @@
     <entry file="file://$PROJECT_DIR$/../../smatch/src/run.cpp" />
     <entry file="file://$PROJECT_DIR$/../../smatch/src/makefile" />
     <entry file="file://$PROJECT_DIR$/../../smatch/CMakeLists.txt" />
-    <entry file="file://$PROJECT_DIR$/../sister_ros/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3780">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../smatch/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../smatch/src/run.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -505,24 +516,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../python/test_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="58" column="96" selection-start-line="58" selection-start-column="96" selection-end-line="58" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../data/cameras/kinect2.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -533,17 +530,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../python/test_rf.py">
+    <entry file="file://$PROJECT_DIR$/../python/test_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        <state relative-caret-position="336">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sister_ros/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../smatch/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3" column="73" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/open3d/open3d/registration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="1042" column="42" selection-start-line="1042" selection-start-column="6" selection-end-line="1042" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/temp/test_alignment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+        <state relative-caret-position="-79">
+          <caret line="6" column="82" selection-start-line="6" selection-start-column="82" selection-end-line="6" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/test_rf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/export_raw_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/sister/datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
         </state>
       </provider>
     </entry>

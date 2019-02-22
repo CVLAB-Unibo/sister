@@ -3,14 +3,14 @@
 #!/usr/bin/env bash
 
 CAMERA_FILE=/home/daniele/work/workspace_python/sister/data/cameras/kinect2.xml
-RGB_FILE=/home/daniele/Downloads/SiSter-sgm/RGB3155.png
-DEPTH_FILE=/home/daniele/Downloads/SiSter-sgm/DepthBig3155.tiff
+RGB_FILE=/home/daniele/Downloads/snapshots_kinect/RGB3269.png
+DEPTH_FILE=/home/daniele/Downloads/snapshots_kinect/DepthBig3269.tiff
 BASELINE=0.005
 MIN_DISTANCE=0.005
-MAX_DISTANCE=0.6
+MAX_DISTANCE=0.8
 SCALING_FACTOR=1
 IS_DEPTH=1
-VISUALIZATION_TYPE=pcd
+VISUALIZATION_TYPE=mesh
 
 
 python /home/daniele/work/workspace_python/sister/python/test_rf.py \
