@@ -30,7 +30,7 @@ for i in range(args.level):
 subfolders = glob.glob(path)
 print(subfolders)
 
-command = "python test_frame.py --path {} --tag {} --visualization_type mesh --filter_level 0 --export True"
+command = "python test_frame.py --path {} --tag {} --visualization_type pcd --filter_level 0 --export True"
 for s in subfolders:
     ccommand = command.format(
         s,

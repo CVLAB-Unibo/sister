@@ -135,7 +135,7 @@ class CircularFrame(object):
                     self.poses[n] = np.loadtxt(image_path.replace("."+extension, ".txt"))
 
         if len(self.images_map) != 5:
-            print("Frame error in size!")
+            print("Frame error in size!", self.images_map)
             import sys
             sys.exit(0)
 
@@ -160,6 +160,19 @@ class CircularFrame(object):
 
 
 
+
+class ScaleManager(object):
+
+    @staticmethod
+    def getScaleByName(source_name):
+        tags_scale_map = {
+            "classical": 256.,
+            "mcnn": 1.
+        }
+        for name, s in tags_scale_map.items():
+            if name in source_name:
+                scale = s
+        return scale
 
 
 

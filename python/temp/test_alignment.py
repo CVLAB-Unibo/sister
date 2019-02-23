@@ -35,23 +35,29 @@ if not os.path.exists(pose_path):
     print("No Pose File for current object in: {}".format(pose_path))
 
 
-source = read_point_cloud(path1)
-target = read_point_cloud(path2)
+source = read_point_cloud(path2)
+target = read_point_cloud(path1)
 
-trans_init = np.loadtxt(pose_path).reshape((4,4))
+trans_init = np.linalg.inv(np.loadtxt(pose_path).reshape((4,4)))
 
-threshold = 0.0005
 #trans_init[:3,3] = np.array([0.,0.,0.602]).reshape((3,))
 
 if args.debug:
     draw_registration_result(source, target, trans_init)
 
-evaluation = evaluate_registration(source, target, threshold, trans_init)
+evaluation = evaluate_registration(source, target, 0.01, trans_init)
+print("EVALUATION")
 print(evaluation)
 
 print("Apply point-to-point ICP")
-reg_p2p = registration_icp(source, target, 0.001, trans_init, TransformationEstimationPointToPoint())
+reg_p2p = registration_icp(source, target, 0.0005, trans_init, TransformationEstimationPointToPoint())
+
 print(reg_p2p)
+
+evaluation = evaluate_registration(source, target, 0.001, reg_p2p.transformation)
+print("EVALUATION2")
+print(evaluation)
+
 
 level_name = os.path.basename(args.path)
 object_name = os.path.split(os.path.split(args.path)[0])[1]
@@ -59,23 +65,24 @@ print(object_name)
 print(level_name)
 
 
-print(reg_p2p.fitness)
-print(reg_p2p.inlier_rmse)
-print(len(reg_p2p.correspondence_set))
+print(evaluation.fitness)
+print(evaluation.inlier_rmse)
+print(len(evaluation.correspondence_set))
 
 f = open('/tmp/results.txt','a')
 
 f.write(level_name.split('_')[1])
 f.write(' ' + level_name.split('_')[2])
-f.write(' ' + str(reg_p2p.fitness))
-f.write(' ' + str(reg_p2p.inlier_rmse))
-f.write(' ' + str(len(reg_p2p.correspondence_set)))
+f.write(' ' + str(evaluation.fitness))
+f.write(' ' + str(evaluation.inlier_rmse))
+f.write(' ' + str(len(evaluation.correspondence_set)))
 f.write('\n')
 f.close()
 
 if args.debug:
     print("Transformation is:")
     print(reg_p2p.transformation)
+
     print("")
     draw_registration_result(source, target, reg_p2p.transformation)
 #

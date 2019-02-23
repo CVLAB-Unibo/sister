@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a4bc982-2aa2-4abb-92d3-254e660d5306" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../data/TIPS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../python/temp/compute_sgm_over_dataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../python/test_frame.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../python/test_frame_batch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dataset/generate_clouds.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/temp/notebooks/results_depth_test.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/temp/test.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/temp/test_depths_match.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python/temp/test_depths_match_single.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python/export_raw_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/export_raw_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/TIPS.md" beforeDir="false" afterPath="$PROJECT_DIR$/../data/TIPS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dataset/clouds/component_0J/component_0J.pcd" beforeDir="false" afterPath="$PROJECT_DIR$/../dataset/clouds/component_0J/component_0J.pcd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dataset/clouds/component_0J/component_0J.ply" beforeDir="false" afterPath="$PROJECT_DIR$/../dataset/clouds/component_0J/component_0J.ply" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dataset/clouds/hexa_screw/hexa_screw.pcd" beforeDir="false" afterPath="$PROJECT_DIR$/../dataset/clouds/hexa_screw/hexa_screw.pcd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dataset/clouds/hexa_screw/hexa_screw.ply" beforeDir="false" afterPath="$PROJECT_DIR$/../dataset/clouds/hexa_screw/hexa_screw.ply" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dataset/models/hexa_screw/hexa_screw.pcd" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../python/sister/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/sister/datasets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python/sister/transformations.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/sister/transformations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/temp/compute_sgm_over_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/temp/compute_sgm_over_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python/temp/test_alignment.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/temp/test_alignment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python/test_rf.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/test_rf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smatch/src/run.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../smatch/src/run.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/test_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/test_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/test_frame_batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/test_frame_batch.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +29,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/_$test_rf.coverage" NAME="test_rf Coverage Results" MODIFIED="1550597152224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/sister$test_rf.coverage" NAME="test_rf Coverage Results" MODIFIED="1550242866272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
-    <SUITE FILE_PATH="coverage/_$sister.coverage" NAME="sister Coverage Results" MODIFIED="1550245277333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python/sister" />
+    <SUITE FILE_PATH="coverage/_$sister.coverage" NAME="sister Coverage Results" MODIFIED="1550916176998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -49,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python/test_frame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="29" column="26" lean-forward="true" selection-start-line="18" selection-end-line="29" selection-end-column="26" />
+            <state relative-caret-position="122">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="58" selection-end-column="17" />
               <folding>
                 <element signature="e#49#59#0" expanded="true" />
               </folding>
@@ -59,31 +63,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../data/TIPS.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="308">
-                <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/open3d/open3d/geometry.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="423" column="8" selection-start-line="423" selection-start-column="8" selection-end-line="423" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python/test_frame_batch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="826">
-              <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+            <state relative-caret-position="-450">
+              <caret line="9" column="14" selection-start-line="9" selection-end-line="9" selection-end-column="14" />
               <folding>
                 <element signature="e#49#58#0" expanded="true" />
               </folding>
@@ -91,11 +74,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python/temp/test_alignment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+            <state relative-caret-position="399">
+              <caret line="24" column="70" lean-forward="true" selection-start-line="21" selection-end-line="24" selection-end-column="70" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../python/temp/test_depths_match.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="102" column="116" selection-start-line="102" selection-start-column="116" selection-end-line="102" selection-end-column="116" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -104,31 +99,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/open3d/open3d/registration.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="112" column="4" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="4" />
+        <entry file="file://$PROJECT_DIR$/../python/temp/test.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python/temp/compute_sgm_over_dataset.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python/test_rf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-770">
-              <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="74" />
+        <entry file="file://$PROJECT_DIR$/../python/temp/notebooks/results_depth_test.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="3" />
             </state>
           </provider>
         </entry>
@@ -136,10 +119,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python/sister/datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="150" column="28" selection-start-line="150" selection-start-column="28" selection-end-line="150" selection-end-column="28" />
+            <state relative-caret-position="285">
+              <caret line="172" selection-start-line="172" selection-end-line="172" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../python/temp/test_depths_match_single.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../data/cameras/usb_camera.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -148,6 +148,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -170,7 +171,16 @@
       <find>quaternion_matrix</find>
       <find>horizontalDisp</find>
       <find>draw_registration_result</find>
+      <find>Frame error</find>
+      <find>base</find>
+      <find>camera</find>
+      <find>print(</find>
+      <find>Frame erro</find>
+      <find>tags_scale_map</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/../python/temp/notebooks</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -200,7 +210,6 @@
         <option value="$PROJECT_DIR$/../sister_ros/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/../python/test_dataset.py" />
         <option value="$PROJECT_DIR$/../data/cameras/kinect2.xml" />
-        <option value="$PROJECT_DIR$/../python/sister/sister.py" />
         <option value="$PROJECT_DIR$/../smatch/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/../data/scripts/kinect2_mesh_sample.sh" />
         <option value="$PROJECT_DIR$/../python/sister/transformations.py" />
@@ -209,20 +218,27 @@
         <option value="$PROJECT_DIR$/../python/export_raw_dataset.py" />
         <option value="$PROJECT_DIR$/../data/scripts/rgb_mesh_sample.sh" />
         <option value="$PROJECT_DIR$/../python/test_rf.py" />
-        <option value="$PROJECT_DIR$/../python/temp/compute_sgm_over_dataset.py" />
-        <option value="$PROJECT_DIR$/../python/sister/datasets.py" />
-        <option value="$PROJECT_DIR$/../python/test_frame.py" />
-        <option value="$PROJECT_DIR$/../data/TIPS.md" />
-        <option value="$PROJECT_DIR$/../python/test_frame_batch.py" />
         <option value="$PROJECT_DIR$/../python/temp/test_alignment.py" />
+        <option value="$PROJECT_DIR$/../python/temp/test.ipynb" />
+        <option value="$PROJECT_DIR$/../python/test_frame_batch.py" />
+        <option value="$PROJECT_DIR$/../data/TIPS.md" />
+        <option value="$PROJECT_DIR$/../dataset/generate_clouds.sh" />
+        <option value="$PROJECT_DIR$/../dataset/generate_clouds.py" />
+        <option value="$PROJECT_DIR$/../python/test_frame.py" />
+        <option value="$PROJECT_DIR$/../python/temp/compute_sgm_over_dataset.py" />
+        <option value="$PROJECT_DIR$/../python/sister/sister.py" />
+        <option value="$PROJECT_DIR$/../python/temp/test_depths_match_single.py" />
+        <option value="$PROJECT_DIR$/../python/sister/datasets.py" />
+        <option value="$PROJECT_DIR$/../python/temp/notebooks/results_depth_test.ipynb" />
+        <option value="$PROJECT_DIR$/../python/temp/test_depths_match.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="64" />
-    <option name="y" value="-11" />
+    <option name="y" value="-4" />
     <option name="width" value="1857" />
-    <option name="height" value="1092" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -253,8 +269,13 @@
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="sister" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sister" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+              <item name="clouds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
@@ -272,6 +293,13 @@
               <item name="sister" type="462c0819:PsiDirectoryNode" />
               <item name="python" type="462c0819:PsiDirectoryNode" />
               <item name="temp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="sister" type="462c0819:PsiDirectoryNode" />
+              <item name="python" type="462c0819:PsiDirectoryNode" />
+              <item name="temp" type="462c0819:PsiDirectoryNode" />
+              <item name="notebooks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="." type="b2602c69:ProjectViewProjectNode" />
@@ -323,8 +351,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../python" />
       <recent name="$PROJECT_DIR$/../python/temp" />
+      <recent name="$PROJECT_DIR$/../python" />
       <recent name="$PROJECT_DIR$/../data/scripts" />
       <recent name="$PROJECT_DIR$/../data/cameras" />
       <recent name="$PROJECT_DIR$/../../blender" />
@@ -345,7 +373,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_rf">
+  <component name="RunManager" selected="Jupyter Notebook.sister">
     <configuration name="rgb_mesh_sample.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="sister" />
       <option name="INTERPRETER_OPTIONS" value="bash" />
@@ -377,6 +405,24 @@
       <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.sh" />
       <option name="PARAMETERS" value="" />
       <module name="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sister" type="JupiterNotebook" factoryName="Jupyter Notebook">
+      <module name="sister" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="additionalOptions" value="" />
+      <option name="ipnbHost" value="127.0.0.1" />
+      <option name="ipnbPort" value="8888" />
       <method v="2" />
     </configuration>
     <configuration name="sister" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -455,12 +501,12 @@
       <workItem from="1550480411317" duration="15175000" />
       <workItem from="1550508355914" duration="3000" />
       <workItem from="1550508383298" duration="19000" />
-      <workItem from="1550508417135" duration="44338000" />
+      <workItem from="1550508417135" duration="68516000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64157000" />
+    <option name="totallyTimeSpent" value="88335000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -472,11 +518,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.73417723" visible="true" weight="0.26644555" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7349206" visible="true" weight="0.26644555" />
       <window_info id="Structure" order="1" sideWeight="0.2651391" side_tool="true" weight="0.26644555" />
-      <window_info id="Favorites" order="2" sideWeight="0.2658228" side_tool="true" visible="true" weight="0.26644555" />
+      <window_info id="Favorites" order="2" sideWeight="0.26507938" side_tool="true" visible="true" weight="0.26644555" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.24920467" />
@@ -487,13 +534,13 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32979852" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50193477" side_tool="true" weight="0.32979852" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.49806523" visible="true" weight="0.32979852" />
-      <window_info anchor="bottom" x="81" y="685" width="1809" height="358" id="Terminal" order="12" sideWeight="0.4991708" weight="0.35206786" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50082916" side_tool="true" weight="0.35206786" />
+      <window_info anchor="bottom" x="64" y="-4" width="1857" height="1085" id="Python Console" order="11" sideWeight="0.49806523" weight="0.32979852" />
+      <window_info anchor="bottom" x="81" y="685" width="1809" height="358" id="Terminal" order="12" sideWeight="0.4991708" visible="true" weight="0.3319194" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.32946378" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.2620232" />
       <window_info anchor="right" id="Database" order="4" weight="0.32946378" />
     </layout>
   </component>
@@ -501,30 +548,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/open3d/open3d/visualization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/torch/lib/python3.6/site-packages/open3d/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rgbd_mesh_sample.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="18" column="30" selection-end-line="21" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../data/scripts/rgbd_mesh_sample.sh" />
-    <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera_1.txt" />
-    <entry file="file://$PROJECT_DIR$/../../data/cameras/usb_camera_1cm.xml" />
-    <entry file="file://$PROJECT_DIR$/../temp/camera_print.py" />
-    <entry file="file://$PROJECT_DIR$/../compare_clouds.py" />
-    <entry file="file://$PROJECT_DIR$/../generate_point_cloud.py" />
-    <entry file="file://$PROJECT_DIR$/../../README.md" />
     <entry file="file://$PROJECT_DIR$/../sister/transformations.py" />
     <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/cv2/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -585,13 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../python/sister/sister.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="186" column="66" selection-start-line="186" selection-start-column="66" selection-end-line="186" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/torch/lib/python3.6/os.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -647,27 +663,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../python/temp/compute_sgm_over_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/open3d/open3d/geometry.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="423" column="8" selection-start-line="423" selection-start-column="8" selection-end-line="423" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../python/sister/datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="150" column="28" selection-start-line="150" selection-start-column="28" selection-end-line="150" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -678,26 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../data/TIPS.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="308">
-            <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../python/test_frame_batch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="826">
-          <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
-          <folding>
-            <element signature="e#49#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/open3d/open3d/registration.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -705,20 +684,128 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///run/user/1000/snap.pycharm-professional/jupyter/nbserver-26513-open.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/torch/lib/python3.6/subprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="1423" selection-start-line="1423" selection-end-line="1423" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dataset/generate_clouds.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/temp/compute_sgm_over_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-191">
+          <caret line="5" column="84" selection-start-line="5" selection-start-column="84" selection-end-line="5" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/TIPS.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="308">
+            <caret line="55" column="3" lean-forward="true" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/sister/sister.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/cameras/usb_camera_1cm.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/cameras/usb_camera.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/test_frame_batch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="9" column="14" selection-start-line="9" selection-end-line="9" selection-end-column="14" />
+          <folding>
+            <element signature="e#49#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../python/test_frame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="18" selection-end-line="29" selection-end-column="26" />
+        <state relative-caret-position="122">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="58" selection-end-column="17" />
           <folding>
             <element signature="e#49#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../python/temp/test_depths_match_single.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/temp/test.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/sister/datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="172" selection-start-line="172" selection-end-line="172" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1318514609/numpy/core/multiarray.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="5807" column="4" selection-start-line="5807" selection-start-column="4" selection-end-line="5807" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/temp/notebooks/results_depth_test.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../python/temp/test_alignment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+        <state relative-caret-position="399">
+          <caret line="24" column="70" lean-forward="true" selection-start-line="21" selection-end-line="24" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python/temp/test_depths_match.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="102" column="116" selection-start-line="102" selection-start-column="116" selection-end-line="102" selection-end-column="116" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>

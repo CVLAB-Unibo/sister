@@ -65,6 +65,7 @@ for i in range(args.filter_level):
     disparity = cv2.bilateralFilter(disparity.astype(np.float32), 5, 6, 6)
 
 
+print("Baseline:",frame.baseline())
 depth = camera.getFx() * frame.baseline() / disparity
 camera_pose = frame.getPose('center')
 max_z = np.abs(camera_pose[2,3] - args.plane_level)
