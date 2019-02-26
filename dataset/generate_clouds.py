@@ -11,6 +11,8 @@ leafsize_map = {
     'nodemcu': 0.0001,
 }
 
+selected = 'plane'
+
 parser = argparse.ArgumentParser("Mesh 2 Clouds")
 parser.add_argument("--leaf_size", help="Subsampling leaf size", default=0.002)
 args = parser.parse_args()
@@ -23,16 +25,18 @@ mesh2pcd = "pcl_mesh2pcd {} {} -leaf_size {}"
 pcd2ply = "pcl_pcd2ply {} {}"
 
 for i in range(len(models)):
-    model_path = os.path.join(models[i], names[i] + ".ply")
-    cloud_path = os.path.join('clouds', names[i])
-    if not os.path.exists(cloud_path):
-        os.makedirs(cloud_path)
-    cloud_path_ply = os.path.join('clouds', names[i], names[i] + ".ply")
-    cloud_path_pcd = os.path.join('clouds', names[i], names[i] + ".pcd")
-    print(model_path, cloud_path_pcd)
+    print(names[i])
+    if  names[i] == selected:
+        model_path = os.path.join(models[i], names[i] + ".ply")
+        cloud_path = os.path.join('clouds', names[i])
+        if not os.path.exists(cloud_path):
+            os.makedirs(cloud_path)
+        cloud_path_ply = os.path.join('clouds', names[i], names[i] + ".ply")
+        cloud_path_pcd = os.path.join('clouds', names[i], names[i] + ".pcd")
+        print(model_path, cloud_path_pcd)
 
-    command = mesh2pcd.format(model_path, cloud_path_pcd, leafsize)
-    command2 = pcd2ply.format(cloud_path_pcd, cloud_path_ply)
+        command = mesh2pcd.format(model_path, cloud_path_pcd, leafsize)
+        command2 = pcd2ply.format(cloud_path_pcd, cloud_path_ply)
 
-    subprocess.call(command.split(' '))
-    subprocess.call(command2.split(' '))
+        subprocess.call(command.split(' '))
+        subprocess.call(command2.split(' '))

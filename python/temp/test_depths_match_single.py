@@ -14,9 +14,10 @@ from open3d.open3d.visualization import draw_geometries
 
 camera = Camera(filename='/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml')
 
-path1 = '/home/daniele/Desktop/temp/SisterAlignmentScenes/arduino_1.exr'
+path1 = '/home/daniele/Desktop/temp/SisterAlignmentScenes/arduino_0.exr'
 # Frame
-frame_path ='/home/daniele/data/datasets/sister/v1/objects_full_scenes/arduino/level_1_010/'
+print("WOW")
+frame_path ='/home/daniele/data/datasets/sister/v1/objects_full_scenes/arduino/level_5_120/'
 output_path = os.path.join(frame_path,'output', '00000_classical_multiview'+'.png')
 print(output_path)
 frame = CircularFrame(frame_path)
@@ -38,7 +39,7 @@ depth2 = cv2.bitwise_and(depth2, depth2, mask=mask)
 min_gt = np.min(depth1)
 max_gt = np.max(depth1)
 print("GT RANGE {}/{}".format(min_gt, max_gt))
-depth2 = np.clip(depth2,0, max_gt*10)
+depth2 = np.clip(depth2,0, max_gt*1000)
 print("SCENE RANGE: ",np.min(depth2),np.max(depth2))
 
 diff = np.abs(depth2-depth1)

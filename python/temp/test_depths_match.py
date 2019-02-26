@@ -22,6 +22,7 @@ parser.add_argument("--model_name", help="Model path", type=str, required=True)
 parser.add_argument("--gt_path", help="Ground truth path", type=str, required=True)
 parser.add_argument("--tag", help="Output tag", type=str, required=True)
 parser.add_argument("--debug", help="Debug", type=bool, default=False)
+parser.add_argument("--plane_level", help="Plane level", type=float, default=0.0432)
 parser.add_argument("--filter_bounds", help="Fitler range bounds", type=bool, default=False)
 parser.add_argument("--output_file", help="Output file", type=str, default="")
 
@@ -40,12 +41,12 @@ for f in frames_paths:
     level = basename.split('_')[1]
     baseline = basename.split('_')[2]
     gt_name = args.model_name + '_' + level + '.exr'
-    gt_path = os.path.join(args.gt_path, gt_name)
+    gt_path = os.path.join(args.gt_path, gt_name) if len(args.gt_path) > 0 else None
     print("#" * 10)
     print(basename, level, baseline, gt_path)
 
     # LOAD CORRESPONDING OUTPUT FILE
-    output_path = [x for x in glob.glob(os.path.join(f, 'output', '*.png')) if args.tag in x]
+    output_path = [x for x in glob.glob(os.path.join(f, 'output', '*.png')) if args.tag == os.path.splitext(os.path.basename(x))[0]]
     if len(output_path) != 1:
         print("ERROR! {}, not found".format(output_path))
         continue
@@ -63,26 +64,30 @@ for f in frames_paths:
 
     # MASK
     mask = np.ones(depth_gt.shape, np.uint8) * 255
-    mask[depth_gt > 1000] = 0
+    mask[depth_gt > 100] = 0
+
 
     # MASKING
-    depth_gt = cv2.bitwise_and(depth_gt, depth_gt, mask=mask)
-    depth = cv2.bitwise_and(depth, depth, mask=mask)
+    #depth_gt = cv2.bitwise_and(depth_gt, depth_gt, mask=mask)
+    #depth = cv2.bitwise_and(depth, depth, mask=mask)
+    depth_gt[depth_gt > 100] = np.fabs(frame.getPose("center")[3,3]) - args.plane_level
+
+
+
+
 
     # FILTER BOUNDS
     if args.filter_bounds:
         print("Filtering bounds...")
         min_gt = np.min(depth_gt)
         max_gt = np.max(depth_gt)
-        depth = np.clip(depth, 0, max_gt * 10)
+        depth = np.clip(depth, 0, 100)#max_gt*10)
         print("SCENE RANGE: ", np.min(depth), np.max(depth))
 
     # DIFF
     diff = np.abs(depth_gt - depth)
     print("DIFF RANGE", np.min(diff), np.max(diff))
     normalized_diff = (diff - np.min(diff)) / (np.max(diff) - np.min(diff))
-
-
 
     # METRICS
     mae = np.abs(depth - depth_gt).mean(axis=None)
@@ -101,7 +106,8 @@ for f in frames_paths:
 
     if args.debug:
         print("Mae: ", mae, " Mse:", mse, " RMSE:", rmse, "TOTAL",np.count_nonzero(mask), "INLIERS:", inliers, " ACC:", accuracy)
-        cv2.imshow("depth", normalized(depth))
+        #cv2.imshow("depth", normalized(depth))
+        cv2.imshow("depth", depth)
         cv2.imshow("depth_gt", normalized(depth_gt))
         cv2.imshow("diff", normalized_diff)
         cv2.imshow("mask", mask)

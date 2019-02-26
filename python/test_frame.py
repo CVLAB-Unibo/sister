@@ -25,6 +25,7 @@ parser.add_argument("--tag", help="Output tag", type=str, required=True)
 parser.add_argument("--visualization_type", help="Visualziation Type", type=str, default="pcd")
 parser.add_argument("--filter_level", help="Filtering Level", type=int, default=0)
 parser.add_argument("--plane_level", help="Plane level", type=float, default=0.0)
+parser.add_argument("--colors", help="Export data", type=bool, default=False)
 parser.add_argument("--export", help="Export data", type=bool, default=False)
 parser.add_argument("--debug", help="Debug mode", type=bool, default=False)
 args = parser.parse_args()
@@ -42,7 +43,7 @@ frame = CircularFrame(path)
 # Output
 output_folder = os.path.join(path, args.output_subfolder)
 output_files = glob.glob(os.path.join(output_folder, '*'))
-output_files = [x for x in output_files if tag in x]
+output_files = [x for x in output_files if tag == os.path.splitext(os.path.basename(x))[0]]
 if len(output_files)==1:
     output_file = output_files[0]
 else:
@@ -80,10 +81,19 @@ print(np.min(depth),np.max(depth))
 cloud = camera.depthMapToPointCloud(depth)
 
 
-
+quality_output_path = '/home/daniele/Desktop/temp/SisterResults/meshes_q/'
+if not os.path.exists(quality_output_path):
+    os.makedirs(quality_output_path)
+frame_name = os.path.split(args.path)[1]
+object_name = os.path.split(os.path.split(args.path)[0])[1]
+output_name = args.visualization_type+"#"+object_name+"#"+frame_name+"#"+str(args.filter_level)
+if args.colors:
+    output_name += "#colors"
+output_name += ".ply"
+output_filename = os.path.join(quality_output_path,output_name)
 
 if args.visualization_type == 'pcd':
-    pcd = Utilities.createPcd(cloud, color_image=rgb)
+    pcd = Utilities.createPcd(cloud, color_image=rgb if args.colors else None)
     pcd.transform(frame.getPose('center'))
 
 
@@ -99,13 +109,15 @@ if args.visualization_type == 'pcd':
         draw_geometries([pcd])
 
 elif args.visualization_type == 'mesh':
-    mesh = Utilities.meshFromPointCloud(cloud, color_image=rgb)
+    mesh = Utilities.meshFromPointCloud(cloud, color_image=rgb if args.colors else None)
     mesh.transform(frame.getPose('center'))
+    write_triangle_mesh(output_filename, mesh)
     if args.export:
         output_folder = os.path.join(path, "meshes")
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
         write_triangle_mesh(os.path.join(output_folder, tag + ".ply"), mesh)
+
 
     if args.debug:
         draw_geometries([mesh])

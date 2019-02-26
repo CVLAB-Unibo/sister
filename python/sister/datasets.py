@@ -167,7 +167,7 @@ class ScaleManager(object):
     def getScaleByName(source_name):
         tags_scale_map = {
             "classical": 256.,
-            "mcnn": 1.
+            "mccnn": 1.
         }
         for name, s in tags_scale_map.items():
             if name in source_name:
