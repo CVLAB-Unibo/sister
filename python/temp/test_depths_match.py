@@ -10,7 +10,6 @@ from sister.datasets import *
 
 
 def normalized(d):
-    print("MINMAX", np.min(d), np.max(d))
     return (d - np.min(d)) / (np.max(d) - np.min(d))
 
 
@@ -68,9 +67,9 @@ for f in frames_paths:
 
 
     # MASKING
-    #depth_gt = cv2.bitwise_and(depth_gt, depth_gt, mask=mask)
-    #depth = cv2.bitwise_and(depth, depth, mask=mask)
-    depth_gt[depth_gt > 100] = np.fabs(frame.getPose("center")[3,3]) - args.plane_level
+    depth_gt = cv2.bitwise_and(depth_gt, depth_gt, mask=mask)
+    depth = cv2.bitwise_and(depth, depth, mask=mask)
+    #depth_gt[depth_gt > 100] = np.fabs(frame.getPose("center")[3,3]) - args.plane_level
 
 
 
@@ -81,7 +80,7 @@ for f in frames_paths:
         print("Filtering bounds...")
         min_gt = np.min(depth_gt)
         max_gt = np.max(depth_gt)
-        depth = np.clip(depth, 0, 100)#max_gt*10)
+        depth = np.clip(depth, 0, max_gt*2)#max_gt*10)
         print("SCENE RANGE: ", np.min(depth), np.max(depth))
 
     # DIFF
@@ -107,7 +106,10 @@ for f in frames_paths:
     if args.debug:
         print("Mae: ", mae, " Mse:", mse, " RMSE:", rmse, "TOTAL",np.count_nonzero(mask), "INLIERS:", inliers, " ACC:", accuracy)
         #cv2.imshow("depth", normalized(depth))
-        cv2.imshow("depth", depth)
+
+        print("MIN MAX DEPTH", np.min(depth), np.max(depth))
+        print("MIN MAX GT", np.min(depth_gt), np.max(depth_gt))
+        cv2.imshow("depth", normalized(depth))
         cv2.imshow("depth_gt", normalized(depth_gt))
         cv2.imshow("diff", normalized_diff)
         cv2.imshow("mask", mask)

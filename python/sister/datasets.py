@@ -167,7 +167,8 @@ class ScaleManager(object):
     def getScaleByName(source_name):
         tags_scale_map = {
             "classical": 256.,
-            "mccnn": 1.
+            "mccnn": 1.,
+            "sgm": 1.
         }
         for name, s in tags_scale_map.items():
             if name in source_name:
@@ -176,4 +177,109 @@ class ScaleManager(object):
 
 
 
-    
+class BunchOfResults(object):
+    VALUE_RMSE = 4
+    VALUE_MSE = 3
+    VALUE_MAE = 2
+    VALUE_ACC = 6
+
+
+    MODELS = [
+        'component_0J',
+        'component_1B',
+        'component_1G',
+        'arduino',
+        'nodemcu',
+        'hexa_nut',
+        'hexa_screw',
+        'washer',
+    ]
+    METHODS = [
+        '00000_classical_horizontal',
+        '00000_classical_multiview',
+        '00000_classical_vertical',
+        'CB_mccnn_raw',
+        'CB_mccnn_refine',
+        'CB_sgm',
+        'CL_mccnn_raw',
+        'CL_mccnn_refine',
+        'CL_sgm',
+        'CR_mccnn_raw',
+        'CR_mccnn_refine',
+        'CR_sgm',
+        'CT_mccnn_raw',
+        'CT_mccnn_refine',
+        'CT_sgm',
+        'FULL_mccnn_raw',
+        'FULL_mccnn_refine',
+        'FULL_sgm',
+        'HORIZONTAL_FULL_mccnn_raw',
+        'HORIZONTAL_FULL_mccnn_refine',
+        'HORIZONTAL_FULL_sgm',
+        'HORIZONTAL_SUM_mccnn_raw',
+        'HORIZONTAL_SUM_mccnn_refine',
+        'HORIZONTAL_SUM_sgm',
+        'SUM_mccnn_raw',
+        'SUM_mccnn_refine',
+        'SUM_sgm',
+        'VERTICAL_FULL_mccnn_raw',
+        'VERTICAL_FULL_mccnn_refine',
+        'VERTICAL_FULL_sgm',
+        'VERTICAL_SUM_mccnn_raw',
+        'VERTICAL_SUM_mccnn_refine',
+        'VERTICAL_SUM_sgm'
+    ]
+
+    METHODS_SGM = [
+        'CB_sgm',
+        'CL_sgm',
+        'CR_sgm',
+        'CT_sgm',
+        'FULL_sgm',
+        # 'HORIZONTAL_FULL_sgm',
+        # 'HORIZONTAL_SUM_sgm',
+        # 'SUM_sgm',
+        # 'VERTICAL_FULL_sgm',
+        # 'VERTICAL_SUM_sgm'
+    ]
+
+    def __init__(self, path, dataset_path=''):
+        self.path = path
+        self.dataset_path = dataset_path
+        self.models_map = {}
+        for model in BunchOfResults.MODELS:
+            if model not in self.models_map:
+                self.models_map[model] = {}
+            for method in BunchOfResults.METHODS:
+                results_name = model + "#" + method
+                filename = os.path.join(self.path, results_name + ".txt")
+                try:
+                    self.models_map[model][method] = np.loadtxt(filename)
+                except:
+                    self.models_map[model][method] = None
+
+    def getDepthPath(self, model, method, level, baseline):
+        baseline = str(int(baseline)).zfill(3)
+        subfolder_name = "level_{}_{}".format(int(level), baseline)
+        path = os.path.join(self.dataset_path, model, subfolder_name,'output', method+".png")
+        return path
+
+    def getRgbPath(self, model, level, baseline):
+        baseline = str(int(baseline)).zfill(3)
+        subfolder_name = "level_{}_{}".format(int(level), baseline)
+        path = os.path.join(self.dataset_path, model, subfolder_name, '00000_center.png')
+        return path
+
+    def getValue(self, model, method, level, baseline_index, target_value):
+        data = self.models_map[model][method]
+        data = data[level*6:level*6 + 6]
+
+        v = data[:,target_value]
+        if baseline_index >= 0:
+            v = v[baseline_index]
+        else:
+            v = np.min(v)
+            baseline_index = np.argmin(v)
+        return v, data[baseline_index, 1]
+
+

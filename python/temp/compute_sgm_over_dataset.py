@@ -3,7 +3,7 @@ import subprocess, sys
 
 smatch_exe = '/home/daniele/work/workspace_python/sister/smatch/build/example'
 max_disparity = 192
-dataset_path = '/home/daniele/data/datasets/sister/v1/objects_full_scenes/plane'
+dataset_path = '/home/daniele/data/datasets/sister/v1/quality_fusion_scenes/bunch_of_nuts'
 output_subfolder = 'output'
 
 subfolders = glob.glob(os.path.join(dataset_path,"*"))
