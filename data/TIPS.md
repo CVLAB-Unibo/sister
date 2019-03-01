@@ -17,6 +17,27 @@ To generate SGM model-based output:
 python compute_sgm_over_dataset.py
 ```
 
+### GENERATE DEPTH RESULTS
+
+With the script:
+```bash
+python export_depth_results.py --dataset_path $DATASET_PATH --gt_path $GT_PATH --model_name component_1B --tag FULL_sgm --debug 1
+```
+it is possible to check/export an output map to a GT map. The GT_PATH must contains a list of `<model>_<level>.png` maps for each
+'model' at each 'level'
+
+Modifying the script:
+```bash
+ python export_results.py 
+``` 
+it is possible to run a BATCH with the previous script.
+
+Finally with
+```bash
+python results_playground.py
+```
+it is possible to Query for results by MODEL/METHOD/LEVEL/BASELINE attributes and generate a table
+
 ### Create resulting *clouds*
 
 For each OUTPUT, and therefore its associated tag (e.g. "classical_multiview") 

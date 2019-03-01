@@ -13,6 +13,7 @@ def loadData(path):
 data, hs, bs = loadData('/tmp/plane_refine2.txt')
 print(data)
 
+f = open('/tmp/planetemp.txt','a')
 n = 6
 min_d = np.min(data[:, 3])
 max_d = np.max(data[:, 3])
@@ -21,8 +22,13 @@ for i in range(n):
     #d = np.clip(d, 0, 0.1)
     d = scipy.signal.medfilt(d, 3)
 
-    x = hs[i:]
-    y = d[i:]
+    x = hs
+    y = d
+    print(i)
+    print(x)
+    print(y)
+    np.savetxt(f, x.reshape((1,-1)), fmt='%10.5f')
+    np.savetxt(f, y.reshape((1,-1)), fmt='%10.5f')
     plt.plot(x, y)
 
     #

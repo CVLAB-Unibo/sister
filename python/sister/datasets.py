@@ -272,8 +272,11 @@ class BunchOfResults(object):
 
     def getValue(self, model, method, level, baseline_index, target_value):
         data = self.models_map[model][method]
-        data = data[level*6:level*6 + 6]
-
+        newdata = []
+        for d in data:
+            if int(d[0]) == int(level):
+                newdata.append(d)
+        data = np.array(newdata)
         v = data[:,target_value]
         if baseline_index >= 0:
             v = v[baseline_index]
@@ -282,4 +285,57 @@ class BunchOfResults(object):
             baseline_index = np.argmin(v)
         return v, data[baseline_index, 1]
 
+
+class ColorUtils(object):
+
+    COLOR_MAP = {
+        "red": "#F44336",
+        "green": "#4CAF50",
+        "blue": "#03A9F4",
+        "indigo": "#3F51B5",
+        "violet": "#9C27B0",
+        "orange": "#FF9800",
+        "purple": "#673AB7",
+        "teal": "#009688",
+        "yellow": "#FFEB3B",
+
+        "brown": "#795548",
+        "gray": "#9E9E9E",
+        "pink": "#E91E63",
+        "indigo": "#3F51B5",
+
+        "lime": "#CDDC39",
+    }
+
+    @staticmethod
+    def colorList():
+        return list(ColorUtils.COLOR_MAP.values())
+
+    @staticmethod
+    def hex_to_rgb(h):
+        h = h.lstrip('#')
+        return np.array(tuple(int(h[i:i + 2], 16) for i in (0, 2, 4)))
+
+    @staticmethod
+    def hex_to_bgr(h):
+        h = h.lstrip('#')
+        return np.array(tuple(int(h[i:i + 2], 16) for i in (4, 2, 0)))
+
+    @staticmethod
+    def getColorByIndex(index, fmt='hex'):
+        colors = ColorUtils.colorList()
+        index = index % len(colors)
+        col = colors[index]
+        if fmt == 'hex':
+            return col
+        elif fmt == 'rgb':
+            return ColorUtils.hex_to_rgb(col)
+        elif fmt == 'rgbf':
+            return ColorUtils.hex_to_rgb(col) / 255.
+        elif fmt == 'bgr':
+            return ColorUtils.hex_to_bgr(col)
+        elif fmt == 'bgrf':
+            return ColorUtils.hex_to_bgr(col) / 255.
+
+        return None
 

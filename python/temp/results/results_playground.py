@@ -96,46 +96,65 @@ from sister.datasets import BunchOfResults
 #     ))
 
 
-results_path = '/tmp/final_results/'
+results_path = '/home/daniele/data/datasets/sister/v1/objects_full_scenes_results/alpha'
 res = BunchOfResults(results_path)
 levels = [0, 1, 3, 5]
-methods = ['CR_sgm','SUM_sgm', 'FULL_sgm','FULL_mccnn_raw']
+enable_bold = False
+methods =  [
+'CR_sgm'
+]
 objects = sorted(BunchOfResults.MODELS)[:4]
 
 level_baseline_map = {
     0: 0,
     1: 1,
-    3: 2,
+    2: 2,
+    3: 3,
     5: 5
+}
+
+models_levels_map = {
+    'arduino': [0, 1],
+    'nodemcu': [0, 1],
+    'washer': [0, 1],
+    'hexa_nut': [0, 1],
+    'hexa_screw': [0, 1],
+    'component_1B': [1, 2],
+    'component_1G': [1, 2],
+    'component_0J': [1, 2],
 }
 
 whole_data = []
 for method in methods:
     local_data = []
     for model in objects:
-        for level in levels:
+        for level in models_levels_map[model]:
             #print(method, model, level)
             #print(res.getValue(model, method, level, -1, BunchOfResults.VALUE_RMSE)[0])
-            local_data.append(res.getValue(model, method, level, level, BunchOfResults.VALUE_RMSE)[0])
+            local_data.append( res.getValue(model, method, level, 2, BunchOfResults.VALUE_RMSE)[0])
             # local_data.append((
             #     model,
             #     method,
             #     res.getValue(model, method, 1, -1, BunchOfResults.VALUE_ACC)
             # ))
     whole_data.append(local_data)
-whole_data = np.array(whole_data)
 
-print(whole_data)
+
+for model in objects:
+    for level in models_levels_map[model]:
+        print("{}_{}".format(model, level))
+
+whole_data = np.array(whole_data)
 max_map = np.argmin(whole_data,0)
 
 table = ''
 for i,method in enumerate(methods):
-    table += method
+    table += method.replace('_','\_')
     for c in range(whole_data.shape[1]):
-        if max_map[c] == i:
-            table += "& \\textbf{"+"{:.2f}".format(whole_data[i, c])+"}"
+        if max_map[c] == i and enable_bold:
+            table += "& \\textbf{"+"{:.4f}".format(whole_data[i, c])+"}"
         else:
-            table += "& {:.2f}".format(whole_data[i, c])
+            table += "& {:.4f}".format(whole_data[i, c])
     table += "\\\\\n"
 print(table)
     # local_data = sorted(local_data, key=lambda x: x[2])

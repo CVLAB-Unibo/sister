@@ -8,7 +8,7 @@ import cv2
 import subprocess
 from sister.datasets import *
 
-command = 'python test_depths_match.py --dataset_path {} --model_name {} --gt_path {} --tag {} --filter_bounds 1 --output_file {}'
+command = 'python export_depth_results.py --dataset_path {} --model_name {} --gt_path {} --tag {} --filter_bounds 1 --output_file {}'
 
 methods = [
     '00000_classical_horizontal',
@@ -57,8 +57,8 @@ models = [
     'washer',
 ]
 dataset_path = '/home/daniele/data/datasets/sister/v1/objects_full_scenes'
-gt_path = '/home/daniele/data/datasets/sister/v1/objects_full_scenes_gt'
-output_path = '/tmp/final_results'
+gt_path = '/home/daniele/data/datasets/sister/v1/objects_full_scenes_gtmanual'
+output_path = '/tmp/giannella'
 
 if not os.path.exists(output_path):
     os.makedirs(output_path)

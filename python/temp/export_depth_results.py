@@ -13,6 +13,11 @@ def normalized(d):
     return (d - np.min(d)) / (np.max(d) - np.min(d))
 
 
+def mouseCallback(evt,x,y,d,a):
+    print("Callback")
+    print(depth[y,x])
+    print(depth_gt[y, x])
+
 parser = argparse.ArgumentParser("Test Alignment")
 parser.add_argument("--camera_file", help="Camera parameters filename", type=str,
                     default='/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml')
@@ -32,14 +37,27 @@ camera = Camera(filename=args.camera_file)
 model_path = os.path.join(args.dataset_path, args.model_name)
 frames_paths = [x for x in sorted(glob.glob(os.path.join(model_path, "*"))) if os.path.isdir(x)]
 
+models_levels_map = {
+    'arduino': [0, 1],
+    'nodemcu': [0, 1],
+    'washer': [0, 1],
+    'hexa_nut': [0, 1],
+    'hexa_screw': [0, 1],
+    'component_1B': [1, 2],
+    'component_1G': [1, 2],
+    'component_0J': [1, 2],
+}
+
 results = []
 for f in frames_paths:
     # BUILDS PATHS
     basename = os.path.basename(f)
 
     level = basename.split('_')[1]
-    if level not in [ '1']:
+
+    if int(level) not in models_levels_map[args.model_name]:
         continue
+
     baseline = basename.split('_')[2]
     gt_name = args.model_name + '_' + level + '.exr'
     gt_path = os.path.join(args.gt_path, gt_name) if len(args.gt_path) > 0 else None
@@ -67,11 +85,11 @@ for f in frames_paths:
     # MASK
     mask = np.ones(depth_gt.shape, np.uint8) * 255
     mask[depth_gt > 100] = 0
-    #mask[disparity == 0] = 0
+    # mask[disparity == 0] = 0
 
     # MASKING
-    #depth_gt = cv2.bitwise_and(depth_gt, depth_gt, mask=mask)
-    #depth = cv2.bitwise_and(depth, depth, mask=mask)
+    # depth_gt = cv2.bitwise_and(depth_gt, depth_gt, mask=mask)
+    # depth = cv2.bitwise_and(depth, depth, mask=mask)
     # depth_gt[depth_gt > 100] = np.fabs(frame.getPose("center")[3,3]) - args.plane_level
 
     # FILTER BOUNDS
@@ -98,23 +116,33 @@ for f in frames_paths:
     ratio = np.maximum(ratio_0, ratio_1)
 
     acc_th = 1.000001
+    total = float(depth.shape[0] * depth.shape[1])
     # inliers = np.count_nonzero(ratio <= acc_th)
-    inliers = np.count_nonzero(mask) - np.count_nonzero(diff > 0.01)
-    accuracy = (np.count_nonzero(mask) - np.count_nonzero(diff > 0.002)) / float(np.count_nonzero(mask))
-    accuracy_10 = (np.count_nonzero(mask) - np.count_nonzero(diff > 0.01)) / float(np.count_nonzero(mask))
-    accuracy_100 = (np.count_nonzero(mask) - np.count_nonzero(diff > 0.1)) / float(np.count_nonzero(mask))
+    inliers = np.count_nonzero(diff <= 0.002)
+    accuracy = np.count_nonzero(diff <= 0.002) / total
+    accuracy_10 = np.count_nonzero(diff <= 0.01) / total
+    accuracy_100 = np.count_nonzero(diff <= 0.1) / total
 
     results.append((level, baseline, mae, mse, rmse, inliers, accuracy))
 
+
+    #cv2.setMouseCallback("depth_gt", mouseCallback)
     if args.debug:
+        cv2.namedWindow("depth", cv2.WINDOW_NORMAL)
+        cv2.namedWindow("depth_gt", cv2.WINDOW_NORMAL)
+        cv2.setMouseCallback("depth", mouseCallback)
+
         print("Mae: ", mae, " Mse:", mse, " RMSE:", rmse, "TOTAL", np.count_nonzero(mask), "INLIERS:", inliers, " ACC:",
               accuracy, accuracy_10, accuracy_100)
         # cv2.imshow("depth", normalized(depth))
 
+        out_depth = normalized(depth)
+        out_gt = normalized(depth_gt)
+
         print("MIN MAX DEPTH", np.min(depth), np.max(depth))
         print("MIN MAX GT", np.min(depth_gt), np.max(depth_gt))
-        cv2.imshow("depth", normalized(depth))
-        cv2.imshow("depth_gt", normalized(depth_gt))
+        cv2.imshow("depth", out_depth)
+        cv2.imshow("depth_gt", out_gt)
         cv2.imshow("diff", normalized_diff)
         cv2.imshow("mask", mask)
 

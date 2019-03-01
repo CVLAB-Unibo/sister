@@ -75,11 +75,9 @@ depth = np.clip(depth, 0, max_z)
 # RGB
 rgb = frame.getImage('center')
 
-
 print(np.min(depth),np.max(depth))
 # Cloud generation
 cloud = camera.depthMapToPointCloud(depth)
-
 
 quality_output_path = '/home/daniele/Desktop/temp/SisterResults/meshes_q/'
 if not os.path.exists(quality_output_path):
