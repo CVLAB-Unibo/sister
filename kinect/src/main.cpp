@@ -84,6 +84,9 @@ int main(){
         
         registration->apply(rgb, depth, &undistorted, &registered, true, &bigdepth);
         listener.release(frames);
+
+        cv::line(rgbmat,cv::Point2d((rgb->width/2)-20, rgb->height/2), cv::Point2d((rgb->width/2)+20, rgb->height/2), cv::Scalar(0));  //crosshair horizontal
+        cv::line(rgbmat,cv::Point2d(rgb->width/2, (rgb->height/2)-20), cv::Point2d(rgb->width/2, (rgb->height/2)+20), cv::Scalar(0));  //crosshair vertical 
         
         cv::Mat(bigdepth.height, bigdepth.width, CV_32FC1, bigdepth.data).copyTo(bigdepthmat);
         cv::Mat(undistorted.height, undistorted.width, CV_32FC1, undistorted.data).copyTo(depthmatUndistorted);
@@ -91,16 +94,19 @@ int main(){
         
         //cv::imshow("rgb", rgbmat);
         //cv::imshow("depth", depthmat);
-        cv::imshow("rgbd", rgbd);
-        cv::imshow("depth undistorted", depthmatUndistorted/4500.0f);
-        cv::imshow("bigdepth", bigdepthmat/4500.0f);
+        cv::Mat visrgb, visdepth;
+        cv::resize(rgbmat,visrgb,cv::Size(),0.5,0.5);
+        cv::resize(bigdepthmat,visdepth,cv::Size(),0.5,0.5);
+
+        //cv::hconcat(rgbmat,bigdepthmat,c);
+        cv::imshow("rgb",visrgb );
+        cv::imshow("bigdepth", visdepth/4500.0f);
 
         char key = cv::waitKey(1);
         
         if(key == ' '){
             depthmatUndistorted = depthmatUndistorted/1000; //depth in meter
             bigdepthmat = bigdepthmat/1000;
-
             cv::imwrite("../../snapshots/Depth" + to_string(framecount) + ".tiff", depthmatUndistorted);
             cv::imwrite("../../snapshots/DepthBig" + to_string(framecount) + ".tiff", bigdepthmat);
             cv::imwrite("../../snapshots/RGB" + to_string(framecount) + ".png", rgbmat);
