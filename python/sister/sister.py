@@ -22,6 +22,9 @@ class Utilities(object):
         if 'exr' in filename:
             img = cv2.imread(filename, cv2.IMREAD_ANYDEPTH) * scaling_factor
             return img
+        elif 'tiff' in filename:
+            img = cv2.imread(filename, cv2.IMREAD_UNCHANGED) * scaling_factor
+            return img
         else:
             return cv2.imread(filename, cv2.IMREAD_ANYDEPTH) * scaling_factor
 

@@ -440,9 +440,10 @@ int main(int argc, char **argv)
 		//horizontalDisp = horizontalDisp * 5;
 		//multiDisp = multiDisp * 5;
 
-		imwrite(string(argv[1]) + "0000" + string(to_string(i)) + "_NO_LR_disparity_horizontal.png", horizontalDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
-		imwrite(string(argv[1]) + "0000" + string(to_string(i)) + "_NO_LR_disparity_vertical.png", verticalDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
-		imwrite(string(argv[1]) + "0000" + string(to_string(i)) + "_NO_LR_disparity_multiview.png", multiDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
+        std::string subfolder = "/output/";
+		imwrite(string(argv[1]) +subfolder + "0000" + string(to_string(i)) + "_classical_horizontal.png", horizontalDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
+		imwrite(string(argv[1]) +subfolder + "0000" + string(to_string(i)) + "_classical_vertical.png", verticalDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
+		imwrite(string(argv[1]) +subfolder + "0000" + string(to_string(i)) + "_classical_multiview.png", multiDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
 		//		imwrite(string(argv[1])+"0000"+string(to_string(i))+"_disparity_average_multiview.png", consensus(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
 	}
 

@@ -1265,6 +1265,16 @@ def quaternion_about_axis(angle, axis):
     return q
 
 
+def matrix_from_pose(pose):
+    """Pose in format X Y Z QX QY QZ QW"""
+    q = pose[3:]
+    q = numpy.roll(q,1)
+    p = pose[:3]
+
+    t = quaternion_matrix(q)
+    t[:3,3] = p
+    return t
+
 def quaternion_matrix(quaternion):
     """Return homogeneous rotation matrix from quaternion.
 

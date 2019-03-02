@@ -3,14 +3,16 @@
 #!/usr/bin/env bash
 
 CAMERA_FILE=/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml
-RGB_FILE=/home/daniele/Desktop/temp/RobotStereoExperiments/Datasets/Results/variable_baseline_plate/subset_4_baseline_0/00000_center.png
-DEPTH_FILE=/home/daniele/Desktop/temp/RobotStereoExperiments/Datasets/Results/variable_baseline_plate/subset_4_baseline_0/mccnn-raw.png
-BASELINE=0.192
+RGB_FILE=/home/daniele/data/datasets/sister/v1/quality_scenes/nutsbin/level_1_010/00000_center.png
+DEPTH_FILE=/home/daniele/data/datasets/sister/v1/quality_scenes/nutsbin/level_1_010/output/00000_classical_multiview.png
+BASELINE=0.01
 MIN_DISTANCE=0.01
-MAX_DISTANCE=0.95
-SCALING_FACTOR=1
+MAX_DISTANCE=0.1
+SCALING_FACTOR=256
 IS_DEPTH=0
 VISUALIZATION_TYPE=mesh
+
+
 
 python /home/daniele/work/workspace_python/sister/python/test_rf.py \
 --camera_file $CAMERA_FILE \
