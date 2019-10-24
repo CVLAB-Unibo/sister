@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(atlas)
 
+set(CMAKE_MACOSX_RPATH 1)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -msse4.1 -msse4.2 -O3")
 
 # OpenMP
@@ -23,7 +24,8 @@ ELSE()
 ENDIF()
 
 #OpenCV
-find_package(OpenCV 3 REQUIRED COMPONENTS core imgproc flann highgui )
+find_package(OpenCV REQUIRED COMPONENTS core imgproc flann highgui )
+message("@@@@@@@@@@@@@@@@@@@@")
 if(OpenCV_INCLUDE_DIRS)
   include_directories(${OpenCV_INCLUDE_DIRS})
 endif(OpenCV_INCLUDE_DIRS)
