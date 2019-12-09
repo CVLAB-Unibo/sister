@@ -1,4 +1,7 @@
 build/
 *.so
 .DS_Store
+.vscode
+.idea
+
 
