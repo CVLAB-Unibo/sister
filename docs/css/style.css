@@ -13,7 +13,8 @@ body {
 
 .container img.robot {
     position: absolute;
-    height: 90%;
+    height: 70%;
+    top: 10%;
     left: 0;
     right: 0;
     margin: auto;
@@ -21,7 +22,8 @@ body {
 
 .container img.robot.light {
     position: absolute;
-    height: 90%;
+    height: 70%;
+    top: 10%;
     left: 0;
     right: 0;
     margin: auto;
@@ -49,7 +51,7 @@ body {
 }
 
 .container .title {
-    font-size: 50px;
+    font-size: 40px;
     position: absolute;
     left: 0;
     right: 0;
