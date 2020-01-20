@@ -12,7 +12,7 @@ from open3d.open3d.visualization import draw_geometries
 from sister.sister import Utilities, Camera
 from open3d import *
 import argparse
-
+from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--camera_file", help="Camera parameters filename", type=str, required=True)
@@ -87,6 +87,10 @@ elif args.visualization_type == 'mesh':
     geom = Utilities.meshFromPointCloud(cloud, color_image=rgb)
 
 
+outputfile = Path(args.depth_file.replace('.png','_3D.png'))
+
+
+
 vis = Visualizer()
 vis.create_window()
 ctr = vis.get_view_control()
@@ -106,7 +110,7 @@ vis.update_renderer()
 image = (np.asarray(vis.capture_screen_float_buffer())*255.).astype(np.uint8)
 print("IMAGE:",np.max(image))
 
-cv2.imwrite("/tmp/gandolfo.png", cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
+cv2.imwrite(str(outputfile), cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
 
 param = ctr.convert_to_pinhole_camera_parameters()
 print(param.extrinsic)
