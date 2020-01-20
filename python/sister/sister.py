@@ -98,8 +98,8 @@ class Utilities(object):
         mesh = TriangleMesh()
 
         mesh.vertices = pcd.points
-        print(mesh.vertices)
-        print(mesh.triangles)
+        print("Vertices", mesh.vertices)
+        print("Triangle", mesh.triangles)
 
         w = cloud.shape[1]
         h = cloud.shape[0]
