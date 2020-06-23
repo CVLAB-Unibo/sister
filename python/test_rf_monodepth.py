@@ -8,12 +8,10 @@ import glob
 import cv2
 import time
 import open3d as o3d
-
-#from open3d.open3d.visualization import draw_geometries
 from sister.sister import Utilities, Camera
 from open3d import *
 import argparse
-from pathlib import Path
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--camera_file", help="Camera parameters filename", type=str, required=True)
@@ -36,7 +34,7 @@ depth_file = args.depth_file
 rgb_file = args.rgb_file
 
 # Disparity&Depth
-disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_factor)
+disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1. / args.scaling_factor)
 #disparity = disparity[:1080, ::]
 
 # DISPARITY SMOOTH
@@ -58,7 +56,10 @@ depth = np.clip(depth, args.min_distance, args.max_distance)
 # RGB Image
 rgb = None
 if len(rgb_file) > 0:
+    print("RGB IS PRESENT!")
     rgb = cv2.cvtColor(cv2.imread(rgb_file), cv2.COLOR_BGR2RGB)
+    rgb = cv2.resize(rgb, (disparity.shape[1], disparity.shape[0]))
+    print(rgb.shape)
 
 # DEPTH SMOOTH
 for i in range(10):
@@ -67,58 +68,18 @@ for i in range(10):
 
 # Cloud generation
 cloud = camera.depthMapToPointCloud(depth)
-cloud[:, 2] *= -1
+
 
 # Open3D Visualizatoin
 
 
-ext = np.array([[0.79450722, -0.60297211,  0.07199249, -0.01164862],
-                [0.29629451, 0.4884098, 0.82077124, -0.10244214],
-                [-0.530064,  -0.6307777,  0.56670243,  0.05412735],
-                [0.,      0.,   0.,  1.]])
-
-
 if args.visualization_type == 'pcd':
 
-    geom = Utilities.createPcd(cloud, color_image=rgb)
-
+    pcd = Utilities.createPcd(cloud, color_image=rgb)
+    o3d.visualization.draw_geometries([pcd])
+    o3d.io.write_point_cloud('/tmp/cloud.ply', pcd)
 elif args.visualization_type == 'mesh':
 
-    geom = Utilities.meshFromPointCloud(cloud, color_image=rgb)
-
-
-outputfile = Path(args.depth_file.replace('.png', '_3D.png'))
-
-
-vis = o3d.visualization.Visualizer()
-vis.create_window()
-ctr = vis.get_view_control()
-param = ctr.convert_to_pinhole_camera_parameters()
-param.extrinsic = ext
-
-vis.add_geometry(geom)
-
-ctr.convert_from_pinhole_camera_parameters(param)
-opt = vis.get_render_option()
-opt.background_color = np.asarray([46./255.]*3)
-
-
-vis.update_geometry(geom)
-vis.poll_events()
-vis.update_renderer()
-image = (np.asarray(vis.capture_screen_float_buffer())*255.).astype(np.uint8)
-print("IMAGE:", np.max(image))
-
-cv2.imwrite(str(outputfile), cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
-
-param = ctr.convert_to_pinhole_camera_parameters()
-print(param.extrinsic)
-#trajectory = PinholeCameraTrajectory()
-#trajectory.intrinsic = param.intrinsic
-# trajectory.extrinsic = ext #Matrix4dVector([param[1]])
-#write_pinhole_camera_trajectory("/tmp/test.json", trajectory)
-vis.destroy_window()
-
-# draw_geometries([mesh])
-
-#write_triangle_mesh("/tmp/mesh.ply", mesh)
+    mesh = Utilities.meshFromPointCloud(cloud, color_image=rgb)
+    o3d.visualization.draw_geometries([mesh])
+    o3d.io.write_triangle_mesh("/tmp/mesh.ply", mesh)

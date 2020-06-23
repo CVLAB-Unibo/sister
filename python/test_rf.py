@@ -7,8 +7,7 @@ import os
 import glob
 import cv2
 import time
-from open3d.open3d.geometry import write_point_cloud, write_triangle_mesh
-from open3d.open3d.visualization import draw_geometries
+import open3d as o3d
 from sister.sister import Utilities, Camera
 from open3d import *
 import argparse
@@ -35,7 +34,7 @@ depth_file = args.depth_file
 rgb_file = args.rgb_file
 
 # Disparity&Depth
-disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1./args.scaling_factor)
+disparity = Utilities.loadRangeImage(depth_file, scaling_factor=1. / args.scaling_factor)
 #disparity = disparity[:1080, ::]
 
 # DISPARITY SMOOTH
@@ -57,12 +56,12 @@ depth = np.clip(depth, args.min_distance, args.max_distance)
 # RGB Image
 rgb = None
 if len(rgb_file) > 0:
+    print("RGB IS PRESENT!")
     rgb = cv2.cvtColor(cv2.imread(rgb_file), cv2.COLOR_BGR2RGB)
 
 # DEPTH SMOOTH
 for i in range(10):
     depth = cv2.bilateralFilter(depth.astype(np.float32), 5, 0.01, 0)
-
 
 
 # Cloud generation
@@ -75,10 +74,10 @@ cloud = camera.depthMapToPointCloud(depth)
 if args.visualization_type == 'pcd':
 
     pcd = Utilities.createPcd(cloud, color_image=rgb)
-    draw_geometries([pcd])
-    write_point_cloud('/tmp/cloud.ply', pcd)
+    o3d.visualization.draw_geometries([pcd])
+    o3d.io.write_point_cloud('/tmp/cloud.ply', pcd)
 elif args.visualization_type == 'mesh':
-    
+
     mesh = Utilities.meshFromPointCloud(cloud, color_image=rgb)
-    draw_geometries([mesh])
-    write_triangle_mesh("/tmp/mesh.ply", mesh)
+    o3d.visualization.draw_geometries([mesh])
+    o3d.io.write_triangle_mesh("/tmp/mesh.ply", mesh)

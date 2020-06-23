@@ -50,5 +50,6 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "utility": "cpp"
-    }
+    },
+    "python.pythonPath": "/Users/daniele/opt/anaconda3/envs/persefone/bin/python"
 }

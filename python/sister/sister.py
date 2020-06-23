@@ -1,9 +1,7 @@
 import cv2
 import numpy as np
 import xmltodict
-from open3d import *
-import open3d
-from open3d.open3d.geometry import TriangleMesh, PointCloud
+import open3d as o3d
 
 
 class Utilities(object):
@@ -62,13 +60,12 @@ class Utilities(object):
         return cloud
 
     @staticmethod
-    def reconstruct_pcd(depth, camera_matrix, th_depth = 100):
+    def reconstruct_pcd(depth, camera_matrix, th_depth=100):
         pcd = []
         fx = camera_matrix[0, 0]
         fy = camera_matrix[1, 1]
         cx = camera_matrix[0, 2]
         cy = camera_matrix[1, 2]
-
 
         # K = np.asarray([[focal_x, 0 ,c_x],
         #      [0 , focal_y ,c_y],
@@ -91,11 +88,10 @@ class Utilities(object):
         print("Total number of points:", len(pcd))
         return np.asarray(pcd)
 
-
     @staticmethod
     def meshFromPointCloud(cloud, color_image=None, max_perimeter_threshold=0.5):
         pcd = Utilities.createPcd(cloud)
-        mesh = TriangleMesh()
+        mesh = o3d.geometry.TriangleMesh()
 
         mesh.vertices = pcd.points
         print("Vertices", mesh.vertices)
@@ -144,9 +140,9 @@ class Utilities(object):
                 colors[points_index, :] = color_map[r, c, :]
                 points_index += 1
 
-        mesh.triangles = open3d.Vector3iVector(np.array(triangles))
-        mesh.vertices = open3d.Vector3dVector(np.array(points))
-        mesh.vertex_colors = open3d.Vector3dVector(np.array(colors))
+        mesh.triangles = o3d.utility.Vector3iVector(np.array(triangles))
+        mesh.vertices = o3d.utility.Vector3dVector(np.array(points))
+        mesh.vertex_colors = o3d.utility.Vector3dVector(np.array(colors))
         # mesh.triangle_normals = open3d.Vector3dVector(np.array(normals))
         mesh.compute_vertex_normals()
 
@@ -154,11 +150,14 @@ class Utilities(object):
 
     @staticmethod
     def createPcd(cloud, color_image=None):
-        pcd = PointCloud()
-        pcd.points = Vector3dVector(cloud.reshape((-1, 3)))
+        pcd = o3d.geometry.PointCloud()
+        pcd.points = o3d.utility.Vector3dVector(cloud.reshape((-1, 3)))
         if color_image is not None:
+            print("ADDING COLORS!")
             colors = color_image.astype(float).reshape((-1, 3)) / 255.
-            pcd.colors = Vector3dVector(colors)
+            print(cloud.reshape((-1, 3)).shape, colors.shape)
+            pcd.colors = o3d.utility.Vector3dVector(colors)
+
         return pcd
 
 
@@ -174,14 +173,14 @@ class Camera(object):
             elif '.xml' in filename:
                 doc = Utilities.loadXMLFile(filename)
                 print("D"*20, doc['sister_camera']['camera']['camera_matrix'])
-                self.image_size= np.fromstring(doc['sister_camera']['camera']['image_size'], sep=' ').reshape((2,))
+                self.image_size = np.fromstring(doc['sister_camera']['camera']['image_size'], sep=' ').reshape((2,))
                 self.camera_matrix = np.fromstring(doc['sister_camera']['camera']['camera_matrix'], sep=' ').reshape((3, 3))
                 self.distortions = np.fromstring(doc['sister_camera']['camera']['distortions'], sep=' ').reshape((1, -1))
                 try:
                     self.sensor_size = np.fromstring(doc['sister_camera']['camera']['sensor_size'], sep=' ').reshape((2,))
                     self.pixel_size = np.fromstring(doc['sister_camera']['camera']['pixel_size'], sep=' ').reshape((2,))
                 except Exception as e:
-                    print("Camera Sensor information missing!",e)
+                    print("Camera Sensor information missing!", e)
 
         if self.sensor_size is not None:
             self.fov_x, self.fov_y, self.focal_length, self.principal_point, self.aspect_ratio = cv2.calibrationMatrixValues(
@@ -190,10 +189,6 @@ class Camera(object):
                 self.sensor_size[0],
                 self.sensor_size[1]
             )
-
-
-
-
 
     def getCameraMatrix(self):
         return self.camera_matrix
@@ -212,7 +207,7 @@ class Camera(object):
 
     def depthMapToPointCloud(self, depth):
         return Utilities.depthMapToPointCloud(depth, self.camera_matrix)
-        #return Utilities.reconstruct_pcd(depth, self.camera_matrix)
+        # return Utilities.reconstruct_pcd(depth, self.camera_matrix)
 
 
 class SisterCamera(Camera):
