@@ -2,15 +2,15 @@
 
 #!/usr/bin/env bash
 
-CAMERA_FILE=/home/daniele/work/workspace_python/sister/data/cameras/usb_camera.xml
-RGB_FILE=/home/daniele/data/datasets/sister/v1/quality_scenes/nutsbin/level_1_010/00000_center.png
-DEPTH_FILE=/home/daniele/data/datasets/sister/v1/quality_scenes/nutsbin/level_1_010/output/00000_classical_multiview.png
-BASELINE=0.01
+CAMERA_FILE=/home/daniele/work/workspace_python/sister/data/cameras/basler_camera.xml
+RGB_FILE=/tmp/blts/0/ws/images/00000.jpg
+DEPTH_FILE=/tmp/outframes/00000.png
+BASELINE=1
 MIN_DISTANCE=0.01
-MAX_DISTANCE=0.1
-SCALING_FACTOR=256
-IS_DEPTH=0
-VISUALIZATION_TYPE=mesh
+MAX_DISTANCE=0.5
+SCALING_FACTOR=65536
+IS_DEPTH=True
+VISUALIZATION_TYPE=pcd
 
 
 
@@ -23,3 +23,4 @@ python /home/daniele/work/workspace_python/sister/python/test_rf.py \
 --max_distance $MAX_DISTANCE \
 --scaling_factor $SCALING_FACTOR \
 --visualization_type $VISUALIZATION_TYPE
+--is_depth $IS_DEPTH

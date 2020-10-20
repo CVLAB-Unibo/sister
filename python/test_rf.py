@@ -21,7 +21,7 @@ parser.add_argument("--baseline", help="Stereo baseline", type=float, default=0.
 parser.add_argument("--min_distance", help="Min clip distance", type=float, default=0.0)
 parser.add_argument("--max_distance", help="Max clip distance", type=float, default=0.8)
 parser.add_argument("--scaling_factor", help="Scaling factor s  -> will be applied (1/s)", type=float, default=256.)
-parser.add_argument("--is_depth", help="Is input a depth?", type=int, default=0)
+parser.add_argument("--is_depth", help="Is input a depth?", type=int, default=1)
 parser.add_argument("--visualization_type", help="Visualziation Type", type=str, default="pcd")
 args = parser.parse_args()
 
