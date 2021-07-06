@@ -1,0 +1,12 @@
+<sister_camera>
+  <camera>
+    <image_size>1920 1080</image_size>
+    <camera_matrix>2112.378813239586 0. 952.2544212661477 0. 2125.4033617745567 438.7507433489026 0. 0. 1. </camera_matrix>
+    <distortions>-0.01050162219902802 1.6011483363480394 -0.0013570192536332378 -0.00024060510629248606 -11.081274116332263</distortions>
+    <sensor_size>3.984 2.952</sensor_size>
+    <pixel_size>0.006 0.006</pixel_size>
+  </camera>
+  <baseline>0.1</baseline>
+  <min_distance>0.01</min_distance>
+  <max_distance>0.50</max_distance>
+</sister_camera>
