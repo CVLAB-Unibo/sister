@@ -77,4 +77,4 @@ where `$SISTER_DATASET` is the root folder of the dataset described above. The s
 
 # ROS implementation
 
-[ROS Example](http://github.com)
+[ROS Example](https://github.com/CVLAB-Unibo/sister/tree/f9044bbdadbe303b71c40f49f3c68de9a9ec5d64/ros)
