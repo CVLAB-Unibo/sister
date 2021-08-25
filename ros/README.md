@@ -44,7 +44,7 @@ void (
     cv_bottom = cv_bridge::toCvCopy(request.bottom, sensor_msgs::image_encodings::BGR8);
 
     // Multiview matcher
-	SisterMultiviewDisparities multiview(
+    SisterMultiviewDisparities multiview(
 		*cv_center,
 		*cv_right,
 		*cv_top,
