@@ -1,3 +1,8 @@
+/*
+Credits to Ivan Krešo for rSGM implementation:
+https://github.com/ivankreso/stereo-vision/tree/master/reconstruction/base/rSGM
+*/
+
 #include "stereoalgo.h"
 
 // hamming distance between uint32
