@@ -53,6 +53,12 @@ Each groundtruth depth image, instead, has a similar naming convention:
 ```
 
 given that the depth groundtruth is associated with the center image of each rig and it varies with the camera distance (but not with the rig baseline).  
+The `EXR` file stores the depth in meters as a `float32` array. To read it with `python` and `opencv` you can use:
+
+```python
+import cv2
+depth = cv2.imread('gt_depth.exr', cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
+```
 
 <a name="cpp" />
 
@@ -70,7 +76,7 @@ OpenMP
 
 #### Compile
 
-```
+```bash
 cd cpp
 mkdir build
 cd build
@@ -82,8 +88,8 @@ make
 
 The above compile command will build the library along with a sample application `compute_disp` that will load 5 images and calculate multiview disparity. You can run the example on the sister dataset folders themselves. For example you can run
 
-```
-/compute_disp $SISTER_DATASET/component_1G/10cm/025mm/ 192
+```bash
+./compute_disp $SISTER_DATASET/component_1G/10cm/025mm/ 192
 ```
 
 where `$SISTER_DATASET` is the root folder of the dataset described above. The second argument is the full path of the folder containing the 5 images (pay attention to naming convention, images names should be `<center|left|top|right|bottom>.png`). The second argument `192` is the max disparity value.
