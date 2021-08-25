@@ -4,9 +4,9 @@ Original paper: *Beyond the Baseline: 3D Reconstructionof Tiny Objects with Sing
 
 ## Table of contents
 
-[Dataset](#dataset)
-[C++ Implementation](#cpp)
-[ROS Implementation](#ros)
+* [Dataset](#dataset)
+* [C++ Implementation](#cpp)
+* [ROS Implementation](#ros)
 
 
 <a name="dataset" />
