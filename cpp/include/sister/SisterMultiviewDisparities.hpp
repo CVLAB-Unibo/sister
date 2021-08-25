@@ -4,16 +4,16 @@
 #include "iostream"
 #include "stereoalgo.h"
 #include "opencv2/opencv.hpp"
-//#include "opencv2/highgui/highgui.hpp"
-//#include "opencv2/imgproc/imgproc.hpp"
 #include <ctime>
-#include "DSI.h"
 
 #include <fcntl.h>
 #include <stdio.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+
+using namespace cv;
+using namespace std;
 
 class SisterMultiviewDisparities
 {
@@ -74,17 +74,17 @@ public:
 
         // Multiview!!!
         begin = clock();
-        this->doMultiStereo((uint8 *)(imC.data), (uint8 *)(im0.data), (uint8 *)(imCf_to90.data), (uint8 *)(im90f.data), (uint8 *)(imCf_to180.data), (uint8 *)(im180f.data), (uint8 *)(imCf_to270.data), (uint8 *)(im270f.data), (float32 *)(multiDisp.data), (float32 *)(dispRight.data), width, height, 1, 8, 4, 4, dispCount, 0, 0);
+        this->doMultiStereo((uint8 *)(imC.data), (uint8 *)(im0.data), (uint8 *)(imCf_to90.data), (uint8 *)(im90f.data), (uint8 *)(imCf_to180.data), (uint8 *)(im180f.data), (uint8 *)(imCf_to270.data), (uint8 *)(im270f.data), (float32 *)(multiDisp.data), (float32 *)(dispRight.data), width, height, 1, 8, 4, 4, dispCount, 0);
         end = clock();
         std::cout << "MV Disparity processed in " << double(end - begin) / CLOCKS_PER_SEC << " sec." << std::endl;
 
         begin = clock();
-        this->doMultiStereo((uint8 *)(imC.data), (uint8 *)(im0.data), (uint8 *)(imCf_to90.data), (uint8 *)(im90f.data), (uint8 *)(imCf_to180.data), (uint8 *)(im180f.data), (uint8 *)(imCf_to270.data), (uint8 *)(im270f.data), (float32 *)(horizontalDisp.data), (float32 *)(dispRight.data), width, height, 1, 8, 4, 4, dispCount, 1, 0);
+        this->doMultiStereo((uint8 *)(imC.data), (uint8 *)(im0.data), (uint8 *)(imCf_to90.data), (uint8 *)(im90f.data), (uint8 *)(imCf_to180.data), (uint8 *)(im180f.data), (uint8 *)(imCf_to270.data), (uint8 *)(im270f.data), (float32 *)(horizontalDisp.data), (float32 *)(dispRight.data), width, height, 1, 8, 4, 4, dispCount, 1);
         end = clock();
         std::cout << "Horizontal Disparity processed in " << double(end - begin) / CLOCKS_PER_SEC << " sec." << std::endl;
 
         begin = clock();
-        this->doMultiStereo((uint8 *)(imC.data), (uint8 *)(im0.data), (uint8 *)(imCf_to90.data), (uint8 *)(im90f.data), (uint8 *)(imCf_to180.data), (uint8 *)(im180f.data), (uint8 *)(imCf_to270.data), (uint8 *)(im270f.data), (float32 *)(verticalDisp.data), (float32 *)(dispRight.data), width, height, 1, 8, 4, 4, dispCount, 2, 0);
+        this->doMultiStereo((uint8 *)(imC.data), (uint8 *)(im0.data), (uint8 *)(imCf_to90.data), (uint8 *)(im90f.data), (uint8 *)(imCf_to180.data), (uint8 *)(im180f.data), (uint8 *)(imCf_to270.data), (uint8 *)(im270f.data), (float32 *)(verticalDisp.data), (float32 *)(dispRight.data), width, height, 1, 8, 4, 4, dispCount, 2);
         end = clock();
         std::cout << "Vertical Disparity processed in " << double(end - begin) / CLOCKS_PER_SEC << " sec." << std::endl;
 
@@ -119,7 +119,7 @@ public:
     }
 
 protected:
-    _DSI doStereo(uint8 *imC_data, uint8 *im0_data, float32 *outputL, float32 *outputR, int width, int height, int method, uint16 paths, const int numThreads, const int numStrips, const int dispCount)
+    void doStereo(uint8 *imC_data, uint8 *im0_data, float32 *outputL, float32 *outputR, int width, int height, int method, uint16 paths, const int numThreads, const int numStrips, const int dispCount)
     {
         // Maximum disparity encoded
         const int maxDisp = dispCount - 1;
@@ -143,23 +143,13 @@ protected:
         // 4) LRC
         doLRCheck(outputL, outputR, width, height, 5);
 
-        // create the DSI for confidence
-        _DSI volume = DSI_init(height, width, 0, dispCount, 0);
-
-        for (int i = 0; i < height; i++)
-            for (int j = 0; j < width; j++)
-                for (int d = 0; d < dispCount; d++)
-                {
-                    volume.values[d].ptr<float>(i)[j] = sum_dsi[width * dispCount * i + j * dispCount + d];
-                }
-
+       
         // Free dsi
         _mm_free(dsi);
         _mm_free(sum_dsi);
-        return volume;
     }
 
-    _DSI doMultiStereo(uint8 *imC_data, uint8 *im0_data, uint8 *imCto90_data, uint8 *im90_data, uint8 *imCto180_data, uint8 *im180_data, uint8 *imCto270_data, uint8 *im270_data, float32 *outputL, float32 *outputR, int width, int height, int method, uint16 paths, const int numThreads, const int numStrips, const int dispCount, const int mode, const int mccnn)
+    void doMultiStereo(uint8 *imC_data, uint8 *im0_data, uint8 *imCto90_data, uint8 *im90_data, uint8 *imCto180_data, uint8 *im180_data, uint8 *imCto270_data, uint8 *im270_data, float32 *outputL, float32 *outputR, int width, int height, int method, uint16 paths, const int numThreads, const int numStrips, const int dispCount, const int mode)
     {
         // Maximum disparity encoded
         const int maxDisp = dispCount - 1;
@@ -186,28 +176,13 @@ protected:
 
         uint16 *sum_dsi = (uint16 *)_mm_malloc(width * height * dispCount * sizeof(uint16), 16);
 
-        // 1) Matching cost
-        if (mccnn == 0)
-        {
-            // 1) AD-Census
-            ad_census(imC_data, im0_data, height, width, dispCount, dsiC0, numThreads);
-            ad_census(imCto90_data, im90_data, width, height, dispCount, dsiC90f, numThreads);
-            ad_census(imCto180_data, im180_data, height, width, dispCount, dsiC180f, numThreads);
-            ad_census(imCto270_data, im270_data, width, height, dispCount, dsiC270f, numThreads);
-        }
-        else
-        {
-            // 1) MC-CNN
-            float *temp;
-            int fd = open("../left.bin", O_RDONLY);
-            temp = (float *)mmap(NULL, dispCount * height * width * sizeof(float), PROT_READ, MAP_SHARED, fd, 0);
-            for (int i = 0; i < height; i++)
-                for (int j = 0; j < width; j++)
-                    for (int k = 0; k < dispCount; k++)
-                        dsiC0[i * width * dispCount + j * dispCount + k] = temp[k * width * height + i * width + j];
-            free(temp);
-            //	  	close(fd);
-        }
+        
+        // 1) AD-Census
+        ad_census(imC_data, im0_data, height, width, dispCount, dsiC0, numThreads);
+        ad_census(imCto90_data, im90_data, width, height, dispCount, dsiC90f, numThreads);
+        ad_census(imCto180_data, im180_data, height, width, dispCount, dsiC180f, numThreads);
+        ad_census(imCto270_data, im270_data, width, height, dispCount, dsiC270f, numThreads);
+        
 
         // 1.1) LRC to obtain confidences
         Mat lrc0 = Mat(height, width, CV_8UC1);
@@ -307,16 +282,6 @@ protected:
         // 3) WTA
         WTALeft_SSE(outputL, sum_dsi, width, height, maxDisp, 1);
 
-        // create the DSI for confidence
-        _DSI volume = DSI_init(height, width, 0, dispCount, 0);
-
-        for (int i = 0; i < height; i++)
-            for (int j = 0; j < width; j++)
-                for (int d = 0; d < dispCount; d++)
-                {
-                    volume.values[d].ptr<float>(i)[j] = sum_dsi[width * dispCount * i + j * dispCount + d];
-                }
-
         // Free dsi
         _mm_free(dsiC0);
         _mm_free(dsiC90);
@@ -327,7 +292,6 @@ protected:
         _mm_free(dsiC270f);
         _mm_free(multidsi);
         _mm_free(sum_dsi);
-        return volume;
     }
 
     cv::Mat center, right, top, left, bottom;

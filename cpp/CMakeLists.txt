@@ -41,7 +41,6 @@ include_directories(
 
 add_library(sister STATIC
     src/sister/census.cpp
-    src/sister/DSI.cpp
     src/sister/postprocess.cpp
     src/sister/sgm.cpp
 )
