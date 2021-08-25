@@ -1,8 +1,8 @@
 #include "iostream"
 #include "stereoalgo.h"
-#include "opencv2/core/core.hpp"
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/opencv.hpp"
+//#include "opencv2/highgui/highgui.hpp"
+//#include "opencv2/imgproc/imgproc.hpp"
 #include <ctime>
 #include "DSI.h"
 
@@ -256,32 +256,25 @@ int main(int argc, char **argv)
 	char *inputFolder = argv[1];
 	int dispCount = atoi(argv[2]);
 
-	//	VideoCapture center(string(inputFolder)+"/Frame_%d/Image_C.png");
-	//	VideoCapture rig0(string(inputFolder)+"/Frame_%d/Image_0.png");
-	//	VideoCapture rig90(string(inputFolder)+"/Frame_%d/Image_90.png");
-	//	VideoCapture rig180(string(inputFolder)+"/Frame_%d/Image_180.png");
-	//	VideoCapture rig270(string(inputFolder)+"/Frame_%d/Image_270.png");
 
-	VideoCapture center(string(inputFolder) + "%05d_center.png");
-	VideoCapture rig0(string(inputFolder) + "%05d_right.png");
-	VideoCapture rig90(string(inputFolder) + "%05d_top.png");
-	VideoCapture rig180(string(inputFolder) + "%05d_left.png");
-	VideoCapture rig270(string(inputFolder) + "%05d_bottom.png");
-
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		Mat bufferC, buffer0, buffer90, buffer180, buffer270, imC, im0, im90, im180, im270;
-		center >> bufferC;
-		rig0 >> buffer0;
-		rig90 >> buffer90;
-		rig180 >> buffer180;
-		rig270 >> buffer270;
 
-		cvtColor(bufferC, imC, CV_BGR2GRAY);
-		cvtColor(buffer0, im0, CV_BGR2GRAY);
-		cvtColor(buffer90, im90, CV_BGR2GRAY);
-		cvtColor(buffer180, im180, CV_BGR2GRAY);
-		cvtColor(buffer270, im270, CV_BGR2GRAY);
+		bufferC = cv::imread(string(inputFolder) + "center.png");
+		buffer0 = cv::imread(string(inputFolder) + "right.png");
+		buffer90 = cv::imread(string(inputFolder) + "top.png");
+		buffer180 = cv::imread(string(inputFolder) + "left.png");
+		buffer270 = cv::imread(string(inputFolder) + "bottom.png");
+	
+
+		std::cout << "SHAPE "<< bufferC.size()<<std::endl;
+
+		cvtColor(bufferC, imC, cv::COLOR_BGR2GRAY);
+		cvtColor(buffer0, im0, cv::COLOR_BGR2GRAY);
+		cvtColor(buffer90, im90, cv::COLOR_BGR2GRAY);
+		cvtColor(buffer180, im180, cv::COLOR_BGR2GRAY);
+		cvtColor(buffer270, im270, cv::COLOR_BGR2GRAY);
 
 		copyMakeBorder(imC, imC, dispCount, dispCount, dispCount, dispCount, BORDER_REPLICATE, 0);
 		copyMakeBorder(im0, im0, dispCount, dispCount, dispCount, dispCount, BORDER_REPLICATE, 0);
@@ -324,36 +317,6 @@ int main(int argc, char **argv)
 		// Run stereo!
 		clock_t begin, end;
 
-		// Binocular!!!
-		/*		begin = clock();
-		doStereo((uint8*)(imC.data), (uint8*)(im0.data), (float32*)(dispC0.data), (float32*)(dispRight.data), width, height, 1, 8, 4, 4, dispCount);
-		end = clock();
-		std::cout << "Disparity 0 processed in " << double(end - begin) / CLOCKS_PER_SEC << " sec." << std::endl;
-
-//		dispC0.convertTo(dispC0, CV_16UC1);
-//		imwrite(string(argv[1])+"0000"+string(to_string(i))+"_disparity_mc.png", dispC0*256);
-//		break;
-/*
-		begin = clock();
-		doStereo((uint8*)(imCf_to90.data), (uint8*)(im90f.data), (float32*)(dispC90f.data), (float32*)(dispRight.data), height, width, 1, 8, 4, 4, dispCount);
-		transpose(dispC90f, dispC90f);
-		flip(dispC90f, dispC90f, -1);
-		end = clock();
-		std::cout << "Disparity 90 processed in " << double(end - begin) / CLOCKS_PER_SEC << " sec." << std::endl;
-
-		begin = clock();
-		doStereo((uint8*)(imCf_to180.data), (uint8*)(im180f.data), (float32*)(dispC180.data), (float32*)(dispRight.data), width, height, 1, 8, 4, 4, dispCount);
-		flip(dispC180, dispC180, 1);
-		end = clock();
-		std::cout << "Disparity 180 processed in " << double(end - begin) / CLOCKS_PER_SEC << " sec." << std::endl;
-
-		begin = clock();		
-		doStereo((uint8*)(imCf_to270.data), (uint8*)(im270f.data), (float32*)(dispC270f.data), (float32*)(dispRight.data), height, width, 1, 8, 4, 4, dispCount);
-		transpose(dispC270f, dispC270f);
-		flip(dispC270f, dispC270f, 1);
-		end = clock();
-		std::cout << "Disparity 270 processed in " << double(end - begin) / CLOCKS_PER_SEC << " sec." << std::endl;
-*/
 
 		// Multiview!!!
 		begin = clock();
@@ -391,60 +354,36 @@ int main(int argc, char **argv)
 				}
 			}
 
-		// Display some colormaps
-		dispC0.convertTo(dispC0, CV_16UC1);
-		//applyColorMap(dispC0*2.5, dispC0, COLORMAP_JET);
-		dispC90f.convertTo(dispC90f, CV_16UC1);
-		//applyColorMap(dispC90f*2.5, dispC90f, COLORMAP_JET);
-		dispC180.convertTo(dispC180, CV_16UC1);
-		//applyColorMap(dispC180*2.5, dispC180, COLORMAP_JET);
-		dispC270f.convertTo(dispC270f, CV_16UC1);
-		//applyColorMap(dispC270f*2.5, dispC270f, COLORMAP_JET);
 
-		//		imshow("Left", bufferC);
-		//		imshow("disparity C->0", dispC0);
-		//		imshow("disparity C->90", dispC90f);
-		//		imshow("disparity C->180", dispC180);
-		//		imshow("disparity C->270", dispC270f);
-
-		// Display some colormaps
 		horizontalDisp.convertTo(horizontalDisp, CV_16UC1);
 		verticalDisp.convertTo(verticalDisp, CV_16UC1);
 		multiDisp.convertTo(multiDisp, CV_16UC1);
-		//applyColorMap(multiDisp*2.5, multiDisp, COLORMAP_JET);
-		//		imshow("Multi disparity", multiDisp);
 
-		consensus.convertTo(consensus, CV_16UC1);
 
-		// For Pierluigi's data
-		//		imwrite(string(argv[1])+"Frame_"+string(to_string(i))+"/disparity_center_to_right.png", dispC0(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"Frame_"+string(to_string(i))+"/disparity_center_to_top.png", dispC90f(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"Frame_"+string(to_string(i))+"/disparity_center_to_left.png", dispC180(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"Frame_"+string(to_string(i))+"/disparity_center_to_bottom.png", dispC270f(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
+		// Output display
+		cv::Mat result_horizontal = horizontalDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 255;
+		cv::Mat result_vertical = verticalDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 255;
+		cv::Mat result_multiview = multiDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 255;
 
-		//		imwrite(string(argv[1])+"Frame_"+string(to_string(i))+"/NO_LR_disparity_horizontal.png", horizontalDisp(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"Frame_"+string(to_string(i))+"/NO_LR_disparity_vertical.png", verticalDisp(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"Frame_"+string(to_string(i))+"/NO_LR_disparity_multiview.png", multiDisp(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"Frame_"+string(to_string(i))+"/disparity_average_multiview.png", consensus(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
+		cv::normalize(result_horizontal, result_horizontal, 0, 255, cv::NORM_MINMAX, CV_8UC1);
+		cv::normalize(result_vertical, result_vertical, 0, 255, cv::NORM_MINMAX, CV_8UC1);
+		cv::normalize(result_multiview, result_multiview, 0, 255, cv::NORM_MINMAX, CV_8UC1);
 
-		//		waitKey(0);
+		cv::applyColorMap(result_horizontal, result_horizontal, cv::COLORMAP_MAGMA);
+		cv::applyColorMap(result_vertical, result_vertical, cv::COLORMAP_MAGMA);
+		cv::applyColorMap(result_multiview, result_multiview, cv::COLORMAP_MAGMA);
 
-		// For Daniele's data
-		//		imwrite(string(argv[1])+"0000"+string(to_string(i))+"_disparity_center_to_right.png", dispC0(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"0000"+string(to_string(i))+"_disparity_center_to_top.png", dispC90f(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"0000"+string(to_string(i))+"_disparity_center_to_left.png", dispC180(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		//		imwrite(string(argv[1])+"0000"+string(to_string(i))+"_disparity_center_to_bottom.png", dispC270f(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
-		// float minv, maxv;
-		// minMaxLoc(multiDisp, minv, maxv);
-		// std::cout << "MIN: " << minv << " MAX:" << maxv << "\n";
-		//horizontalDisp = horizontalDisp * 5;
-		//multiDisp = multiDisp * 5;
+		cv::Mat blended;
+		float alpha_blending_rgb = 0.1;
+		cv::addWeighted(bufferC,alpha_blending_rgb, result_multiview, 1.0 - alpha_blending_rgb, 0.0, blended);
 
-        std::string subfolder = "/output/";
-		imwrite(string(argv[1]) +subfolder + "0000" + string(to_string(i)) + "_classical_horizontal.png", horizontalDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
-		imwrite(string(argv[1]) +subfolder + "0000" + string(to_string(i)) + "_classical_vertical.png", verticalDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
-		imwrite(string(argv[1]) +subfolder + "0000" + string(to_string(i)) + "_classical_multiview.png", multiDisp(Rect(dispCount, dispCount, width - (dispCount * 2), height - (dispCount * 2))) * 256);
-		//		imwrite(string(argv[1])+"0000"+string(to_string(i))+"_disparity_average_multiview.png", consensus(Rect(dispCount,dispCount,width-(dispCount*2),height-(dispCount*2)))*256);
+		cv::imshow("image", bufferC);
+		cv::imshow("blended", blended);
+		cv::imshow("disp_horizontal", result_horizontal);
+		cv::imshow("disp_vertical", result_horizontal);
+		cv::imshow("disp_multiview", result_multiview);
+		cv::waitKey(0);
+		
 	}
 
 	return 0;

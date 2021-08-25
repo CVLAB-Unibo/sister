@@ -24,11 +24,14 @@ ELSE()
 ENDIF()
 
 #OpenCV
-find_package(OpenCV REQUIRED COMPONENTS core imgproc flann highgui )
-message("@@@@@@@@@@@@@@@@@@@@")
+find_package(OpenCV REQUIRED )
 if(OpenCV_INCLUDE_DIRS)
   include_directories(${OpenCV_INCLUDE_DIRS})
 endif(OpenCV_INCLUDE_DIRS)
+
+message(@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@)
+message(${OpenCV_LIBS} )
+message(@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@)
 
 # #BOOST
 # find_package(Boost REQUIRED COMPONENTS filesystem system program_options thread iostreams graph)
@@ -45,7 +48,7 @@ include_directories(
 )
 
 
-add_library(smatch SHARED
+add_library(smatch STATIC
     src/smatch/census.cpp
     src/smatch/DSI.cpp
     src/smatch/postprocess.cpp
@@ -57,7 +60,7 @@ add_library(smatch SHARED
 #################
 
 add_executable(example src/run.cpp)
-target_link_libraries(example ${OpenCV_LIBS} smatch)
+target_link_libraries(example smatch ${OpenCV_LIBS} )
 
 
 
