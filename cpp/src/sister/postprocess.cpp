@@ -1,3 +1,8 @@
+/*
+Credits to Ivan Krešo for rSGM implementation:
+https://github.com/ivankreso/stereo-vision/tree/master/reconstruction/base/rSGM
+*/
+
 #include "stereoalgo.h"
 
 inline void vecSortandSwap(__m128& a, __m128& b)
