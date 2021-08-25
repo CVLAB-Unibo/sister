@@ -52,11 +52,11 @@ given that the depth groundtruth is associated with the center image of each rig
 
 <a name="cpp" />
 
-# Sister 5 views disparity computation
+# Sister C++: 5 views disparity computation
 
 This repository containes a prototype implementation of the multiview stereo algorithm described in the paper. The implementations is contained in the `cpp` folder and is basically wrapped around a single helper class.
 
-## C++ Requirements
+#### Requirements
 
 ```
 OpenCV 
@@ -64,7 +64,7 @@ Eiegen3
 OpenMP
 ```
 
-## Compile
+#### Compile
 
 ```
 cd cpp
@@ -74,7 +74,7 @@ cmake ..
 make
 ```
 
-## Run example
+#### Run example
 
 The above compile command will build the library along with a sample application `compute_disp` that will load 5 images and calculate multiview disparity. You can run the example on the sister dataset folders themselves. For example you can run
 
